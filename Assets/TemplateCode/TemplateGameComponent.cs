@@ -6,6 +6,7 @@ using Scaffold;
 
 public class TemplateGameComponent : GameComponent
 {
+
     public override void GameFixedUpdate()
     {
         base.GameFixedUpdate();

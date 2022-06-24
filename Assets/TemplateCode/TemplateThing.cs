@@ -17,6 +17,9 @@ public class TemplateThing : Thing
         curve.Add(0.5f, 0.2f);
         curve.Add(1f, 1f);
         Debug.Log("Simple Curve: " + curve.Evaluate(0.8f));
+
+        
+
         //Todo
     }
 
