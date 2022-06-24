@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StageManager : MonoBehaviour
+using Scaffold;
+public class StageManager : GameComponent
 {
     int term;
     List<Character> characterList;
