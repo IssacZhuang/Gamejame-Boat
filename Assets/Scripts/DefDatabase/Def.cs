@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class VerbTracker 
+public class Def
 {
-    public void VerbTrackerTick()
-    {
-
-    }
+    public string defName;
+    public string title;
 }

@@ -9,14 +9,33 @@ public class Character : Thing
     public bool IsKilled => isKilled;
     private bool isKilled = false;
 
+    public virtual Vector3 DrawPos => this.transform.position;
+
+    public float Health
+    {
+        get
+        {
+            return health;
+        }
+        set
+        {
+            health = value;
+            if (health <= 0) this.Kill();
+        }
+    }
+    private float health = 100f;
     public BuffTracker BuffTracker { get; private set; }
     public VerbTracker VerbTracker { get; private set; }
+
+    public Character()
+    {
+        BuffTracker = new BuffTracker(this);
+        VerbTracker = new VerbTracker(this);
+    }
 
     public override void ThingPostStart()
     {
         base.ThingPostStart();
-        BuffTracker = new BuffTracker();
-        VerbTracker = new VerbTracker();
     }
 
     public override void ThingFixedUpdate()
