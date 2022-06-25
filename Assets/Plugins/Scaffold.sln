@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.810.20
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB9-8B4A-11D0-8D11-00A0C91BC942}") = "Scaffold", "Scaffold.dll", "{799AC7DA-1715-4992-85A9-00F3CBB2F09E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Default|Any CPU = Default|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{799AC7DA-1715-4992-85A9-00F3CBB2F09E}.Default|Any CPU.ActiveCfg = Default|Any CPU
+		{799AC7DA-1715-4992-85A9-00F3CBB2F09E}.Default|Any CPU.Build.0 = Default|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CB2843CC-BF64-4EFB-8439-9C169300D5C3}
+	EndGlobalSection
+EndGlobal
