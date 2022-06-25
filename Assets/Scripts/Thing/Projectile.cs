@@ -58,4 +58,9 @@ public class Projectile : Thing
         repelBuff.direction = direction;
         character.BuffTracker.TryAddBuff(repelBuff);
     }
+
+    public void OnDestroy()
+    {
+        if (ActionVerbEnd != null) ActionVerbEnd();
+    }
 }

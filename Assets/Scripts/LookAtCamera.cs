@@ -19,7 +19,7 @@ public class LookAtCamera : MonoBehaviour
     {
         Vector3 lookAtPos = new Vector3(camera.position.x, this.transform.position.y, camera.position.z);
 
-        Debug.Log(lookAtPos.x +" " + lookAtPos.y + " "+ lookAtPos.z);
+        //Debug.Log(lookAtPos.x +" " + lookAtPos.y + " "+ lookAtPos.z);
         transform.LookAt(lookAtPos, Vector3.up);
 
     }
