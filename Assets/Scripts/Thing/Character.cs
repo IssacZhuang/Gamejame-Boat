@@ -27,10 +27,24 @@ public class Character : Thing
     public BuffTracker BuffTracker { get; private set; }
     public VerbTracker VerbTracker { get; private set; }
 
+<<<<<<< Updated upstream
     public Character()
     {
         BuffTracker = new BuffTracker(this);
         VerbTracker = new VerbTracker(this);
+=======
+    public List<VerbDef> VerbInhand { get; private set; } = new List<VerbDef>();
+
+    public override void InitData()
+    {
+
+        if (BuffTracker == null) BuffTracker = new BuffTracker(this);
+        if (VerbTracker == null) VerbTracker = new VerbTracker(this);
+        VerbInhand.Add(VerbDefOf.attackFireball);
+        VerbInhand.Add(VerbDefOf.defendBasic);
+        VerbInhand.Add(VerbDefOf.movementBasic);
+        VerbInhand.Add(VerbDefOf.peek);
+>>>>>>> Stashed changes
     }
 
     public override void ThingPostStart()
