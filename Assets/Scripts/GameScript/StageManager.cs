@@ -56,6 +56,11 @@ public class StageManager : GameComponent
         GameObject player = GameObject.Instantiate(playerPrefab);
         Character character = player.GetComponent<Character>();
         character.InitData();
+
+        character.VerbInhand.Add(VerbDefOf.movementBasic);
+        character.VerbInhand.Add(VerbDefOf.attackFireball);
+        character.VerbInhand.Add(VerbDefOf.defendBasic);
+
         characters.Add(character);
         character.transform.position = spawnPoints[characters.Count - 1].position;
     }
