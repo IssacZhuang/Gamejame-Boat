@@ -8,6 +8,8 @@ public class VerbTracker
     private Queue<Verb> pendingVerbs = new Queue<Verb>();
     private Character parent;
 
+    public bool IsCurrentVerbOnGoing => currentVerb != null && !currentVerb.IsEnded;
+
     public VerbTracker(Character character)
     {
         this.parent = character;
