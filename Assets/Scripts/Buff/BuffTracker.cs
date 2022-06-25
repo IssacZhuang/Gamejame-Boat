@@ -53,6 +53,19 @@ public class BuffTracker
         return true;
     }
 
+    public bool TryAddBuff(Buff buff)
+    {
+        if (buffs.AsParallel().Any(x => x.def.immuniteBuffs.Contains(buff.def)))
+        {
+            return false;
+        }
+
+        buff.parent = this.parent;
+        buffs.Add(buff);
+        buff.BuffPostAdd();
+        return true;
+    }
+
     public void RemoveBuff(Buff buff)
     {
         buffs.Remove(buff);

@@ -6,7 +6,7 @@ using Scaffold;
 public class InputManager : GameComponent
 {
     //GameManager gameManager;
-    StageManager stageManager;
+    private StageManager stageManager;
 
     // to store data for each stage
     private int indexCounter = 0;
@@ -16,6 +16,10 @@ public class InputManager : GameComponent
     private Dictionary<Character, List<Verb>> charactersPeekVerb = new Dictionary<Character, List<Verb>>();
     private Dictionary<Character, List<Verb>> charactersInvokeVerb = new Dictionary<Character, List<Verb>>();
 
+    public void Start()
+    {
+        stageManager = GetComponent<StageManager>();
+    }
 
     public void StartGame()
     {
@@ -135,7 +139,7 @@ public class InputManager : GameComponent
 
     private void InvokeResult()
     {
-        // invoke(charactersInvokeVerb)
+        stageManager.SetCharacterVerbs(charactersInvokeVerb);
         return;
     }
 

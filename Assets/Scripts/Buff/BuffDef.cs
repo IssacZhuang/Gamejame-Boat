@@ -14,4 +14,12 @@ public class BuffDef :Def
     public float initialSeverity;
     public Type workerClass = typeof(Buff); //default worker class
     public List<BuffDef> immuniteBuffs = new List<BuffDef> ();
+
+
+    public Buff CreateBuff()
+    {
+        Buff buff = (Buff)Activator.CreateInstance(this.workerClass);
+        buff.def = this;
+        return buff;
+    }
 }
