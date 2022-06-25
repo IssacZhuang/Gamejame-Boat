@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 using Scaffold;
@@ -17,6 +18,8 @@ public class Projectile : Thing
             direction = value;
         }
     }
+
+    public Action ActionVerbEnd;
 
     private GameObject projectile;
     private float speed = 5.0f;
@@ -38,14 +41,11 @@ public class Projectile : Thing
         //越界判断
         if (Find.CurrentGame.GlobalTick - startTime > 50 * 5) //at most last 5s
         {
+            if (ActionVerbEnd != null) ActionVerbEnd();
             Destroy();
         }
     }
 
-    void OnDestroy()
-    {
-        
-    }
 
 
     private void OnCollisionEnter(Collision collision)
@@ -60,6 +60,7 @@ public class Projectile : Thing
 
     public virtual void HitCharacter(Character character)
     {
+        if (ActionVerbEnd != null) ActionVerbEnd();
         character.BuffTracker.TryAddBuff(BuffDefOf.attack);
     }
 }
