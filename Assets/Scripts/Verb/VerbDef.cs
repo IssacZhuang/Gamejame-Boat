@@ -7,6 +7,7 @@ public class VerbDef : Def
 {
     public Texture2D UITexture;
     public bool shouldLocateTarget;
+    public int priority;
     public Type workerClass = typeof(Verb);
 
     public Verb CreateVerb()
