@@ -9,7 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2493062868290686237}
-  - component: {fileID: 2257254441986750913}
+  - component: {fileID: 8712129772651103429}
+  - component: {fileID: 8954335551798205937}
+  - component: {fileID: 4731427224219278434}
+  - component: {fileID: 6462627647946717579}
   m_Layer: 0
   m_Name: Meteorite
   m_TagString: Untagged
@@ -28,76 +31,25 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 7087559296895891561}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2257254441986750913
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4565749787891420603}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4870d793b843948f9aa82db2ebc870fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fromDirection: {x: 0, y: 0, z: 0}
-  toDirection: {x: 0, y: 0, z: 0}
-  speed: 5
---- !u!1 &7049820897125579983
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7087559296895891561}
-  - component: {fileID: 5265532192443702664}
-  - component: {fileID: 661541303375108467}
-  - component: {fileID: 3012219625824535718}
-  - component: {fileID: 7131225033012921694}
-  m_Layer: 0
-  m_Name: MeteoriteInstance
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7087559296895891561
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7049820897125579983}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2493062868290686237}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &5265532192443702664
+--- !u!33 &8712129772651103429
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7049820897125579983}
+  m_GameObject: {fileID: 4565749787891420603}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &661541303375108467
+--- !u!23 &8954335551798205937
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7049820897125579983}
+  m_GameObject: {fileID: 4565749787891420603}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -133,31 +85,30 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &3012219625824535718
+--- !u!135 &4731427224219278434
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7049820897125579983}
+  m_GameObject: {fileID: 4565749787891420603}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7131225033012921694
+--- !u!114 &6462627647946717579
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7049820897125579983}
+  m_GameObject: {fileID: 4565749787891420603}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4870d793b843948f9aa82db2ebc870fc, type: 3}
+  m_Script: {fileID: 11500000, guid: 65d85fb8c91859b44b02096fb99bd6cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fromDirection: {x: 0, y: 0, z: 0}
-  toDirection: {x: 0, y: 0, z: 0}
   speed: 5
+  direction: {x: 0, y: 0}

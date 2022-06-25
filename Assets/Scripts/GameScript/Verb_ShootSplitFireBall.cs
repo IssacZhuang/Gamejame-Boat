@@ -13,54 +13,45 @@ public class Verb_ShootSplitFireBall : Verb
         // init object
         GameObject projectileMain = GameObject.Instantiate(objct);
         projectileMain.transform.parent = this.parent.transform;
-        Projectile_SplitFireBall fireBallMain = projectileMain.GetComponent<Projectile_SplitFireBall>();
+        Projectile fireBallMain = projectileMain.GetComponent<Projectile>();
 
         GameObject projectileUpper = GameObject.Instantiate(objct);
         projectileUpper.transform.parent = this.parent.transform;
-        Projectile_SplitFireBall fireBallUpper = projectileUpper.GetComponent<Projectile_SplitFireBall>();
+        Projectile fireBallUpper = projectileUpper.GetComponent<Projectile>();
 
         GameObject projectileLower = GameObject.Instantiate(objct);
         projectileLower.transform.parent = this.parent.transform;
-        Projectile_SplitFireBall fireBallLower = projectileLower.GetComponent<Projectile_SplitFireBall>();
+        Projectile fireBallLower = projectileLower.GetComponent<Projectile>();
 
 
         // some thing define need to fill
         Vector3 from = this.parent.transform.position;
-        fireBallMain.direction = new Vector2(Target.location.x - from.x, Target.location.z - from.z);
-        fireBallMain.deviateDegree = 0;
+        fireBallMain.direction = new Vector3(Target.location.x - from.x, 0, Target.location.z - from.z);
         // Call end script verb when verb end
         fireBallMain.ActionVerbEnd = () =>
         {
             this.OnVerbEnd();
-            GameObject.Find("GameManager").GetComponent<Game>().DeregisterThing(fireBallMain);
         };
 
-        // invoke
-        GameObject.Find("GameManager").GetComponent<Game>().RegisterThing(fireBallMain);
 
-        fireBallUpper.direction = new Vector2(Target.location.x - from.x, Target.location.z - from.z);
-        fireBallUpper.deviateDegree = 30;
+        fireBallUpper.direction = new Vector3(Target.location.x - from.x, 0, Target.location.z - from.z);
+        fireBallUpper.direction = Quaternion.Euler(0, 30f, 0) * fireBallUpper.direction;
         // Call end script verb when verb end
         fireBallUpper.ActionVerbEnd = () =>
         {
             this.OnVerbEnd();
-            GameObject.Find("GameManager").GetComponent<Game>().DeregisterThing(fireBallUpper);
         };
 
-        // invoke
-        GameObject.Find("GameManager").GetComponent<Game>().RegisterThing(fireBallUpper);
 
-        fireBallLower.direction = new Vector2(Target.location.x - from.x, Target.location.z - from.z);
-        fireBallLower.deviateDegree = -30;
+
+        fireBallLower.direction = new Vector3(Target.location.x - from.x, 0, Target.location.z - from.z);
+        fireBallLower.direction = Quaternion.Euler(0, -30f, 0) * fireBallLower.direction;
         // Call end script verb when verb end
         fireBallLower.ActionVerbEnd = () =>
         {
             this.OnVerbEnd();
-            GameObject.Find("GameManager").GetComponent<Game>().DeregisterThing(fireBallLower);
         };
 
-        // invoke
-        GameObject.Find("GameManager").GetComponent<Game>().RegisterThing(fireBallLower);
         return base.TryCastVerb();
     }
 }
