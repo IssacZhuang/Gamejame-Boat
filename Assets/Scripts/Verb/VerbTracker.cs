@@ -25,6 +25,11 @@ public class VerbTracker
         pendingVerbs.Enqueue(verb);
     }
 
+    public Verb PeekVerb()
+    {
+        return pendingVerbs.Peek();
+    }
+
     public void NextVerb()
     {
         if (currentVerb != null && !currentVerb.IsEnded)
