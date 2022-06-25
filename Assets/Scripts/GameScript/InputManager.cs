@@ -24,6 +24,7 @@ public class InputManager : GameComponent
     public void StartGame()
     {
         //gameManager.StartGame();
+        StartNewStage();
     }
 
     public void ExitGame()
@@ -57,11 +58,11 @@ public class InputManager : GameComponent
 
     public Character GuiPrepareGetCharacterCallBack()
     {
+        Debug.Log(characters.Count);
         //return character or null
-        if (characters.Count == indexCounter)
+        if (characters.Count > indexCounter)
         {
-            indexCounter += 1;
-            return characters[indexCounter];
+            return characters[indexCounter++];
         }
         indexCounter += 1;
         return null;

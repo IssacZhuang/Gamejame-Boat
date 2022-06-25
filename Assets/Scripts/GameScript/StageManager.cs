@@ -10,6 +10,12 @@ public class StageManager : GameComponent
     public GameObject playerPrefab;
     public Transform[] spawnPoints;
 
+    public InteractionManager interactionManager;
+    public InputManager inputManager;
+
+    private int playerLimit = 4;
+
+
     public List<Character> Characters => characters;
 
     private List<Character> characters = new List<Character>();
@@ -50,6 +56,7 @@ public class StageManager : GameComponent
 
     public void AddNewCharacter()
     {
+        //UnityEngine.Debug.Log("Add new character");
         if (playerPrefab == null)
         {
             UnityEngine.Debug.LogError("No playerPrefab set");
@@ -61,7 +68,7 @@ public class StageManager : GameComponent
             UnityEngine.Debug.LogError("No spawn point for new player");
             return;
         }
-
+        //UnityEngine.Debug.Log("New character generated");
         GameObject player = GameObject.Instantiate(playerPrefab);
         Character character = player.GetComponent<Character>();
         character.InitData();
@@ -69,9 +76,10 @@ public class StageManager : GameComponent
         character.VerbInhand.Add(VerbDefOf.movementBasic);
         character.VerbInhand.Add(VerbDefOf.attackFireball);
         character.VerbInhand.Add(VerbDefOf.defendBasic);
+        character.VerbInhand.Add(VerbDefOf.peek);
 
         characters.Add(character);
-        character.transform.position = spawnPoints[characters.Count - 1].position;
+        character.transform.position = spawnPoints[characters.Count-1].position;
     }
 
     public void NextCharacter()
@@ -91,7 +99,13 @@ public class StageManager : GameComponent
 
     public void StartNewStage()
     {
+        for (int i = 0; i < playerLimit; i++)
+        {
+            AddNewCharacter();
+        }
+        UnityEngine.Debug.Log(characters.Count);
 
+        interactionManager.StartTest();
     }
 
     public void SortCharacter()
