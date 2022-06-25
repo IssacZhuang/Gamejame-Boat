@@ -7,6 +7,8 @@ using Scaffold;
 
 public class Test_StateManagerQueuedVerb:GameComponent
 {
+
+    public GameObject fireBall;
     public void Start()
     {
         StageManager stageManager = GetComponent<StageManager>();
@@ -16,19 +18,21 @@ public class Test_StateManagerQueuedVerb:GameComponent
         }
 
         Verb playerOneMove = VerbDefOf.movementBasic.CreateVerb();
-        playerOneMove.TrySetTarget(new TargetInfo { location = new Vector3(2, 0, 2) });
+        playerOneMove.TrySetTarget(new TargetInfo { location = new Vector3(5, 0, 5) });
 
-        Verb playerOneShoot = VerbDefOf.movementBasic.CreateVerb();
-        playerOneMove.TrySetTarget(new TargetInfo { location = new Vector3(-1, 0, 1) });
+        Verb_ShootFireBall playerOneShoot = (Verb_ShootFireBall)VerbDefOf.attackFireball.CreateVerb();
+        playerOneShoot.objct = fireBall;
+        playerOneShoot.TrySetTarget(new TargetInfo { location = new Vector3(-10, 0, 10) });
 
         stageManager.Characters.ElementAt(0).VerbTracker.AddVerb(playerOneMove);
         stageManager.Characters.ElementAt(0).VerbTracker.AddVerb(playerOneShoot);
 
         Verb playerTwoMove = VerbDefOf.movementBasic.CreateVerb();
-        playerOneMove.TrySetTarget(new TargetInfo { location = new Vector3(-1, 0, 1) });
+        playerTwoMove.TrySetTarget(new TargetInfo { location = new Vector3(-1, 0, 1) });
 
-        Verb playerTwoShoot = VerbDefOf.movementBasic.CreateVerb();
-        playerOneMove.TrySetTarget(new TargetInfo { location = new Vector3(2, 0, 2) });
+        Verb_ShootSplitFireBall playerTwoShoot = (Verb_ShootSplitFireBall)VerbDefOf.attackSplitFireball.CreateVerb();
+        playerTwoShoot.objct = fireBall;
+        playerTwoShoot.TrySetTarget(new TargetInfo { location = new Vector3(5, 0, 5) });
 
         stageManager.Characters.ElementAt(1).VerbTracker.AddVerb(playerTwoMove);
         stageManager.Characters.ElementAt(1).VerbTracker.AddVerb(playerTwoShoot);

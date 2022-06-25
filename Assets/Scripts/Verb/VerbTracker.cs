@@ -8,7 +8,9 @@ public class VerbTracker
     private Queue<Verb> pendingVerbs = new Queue<Verb>();
     private Character parent;
 
+    public bool IsCurrentVerbFinished => currentVerb != null && currentVerb.parent == null;
     public bool IsCurrentVerbOnGoing => currentVerb != null && !currentVerb.IsEnded;
+    public bool HasQueuedVerb => pendingVerbs.Count > 0;
 
     public VerbTracker(Character character)
     {
@@ -27,9 +29,11 @@ public class VerbTracker
         pendingVerbs.Enqueue(verb);
     }
 
+    
+
     public Verb PeekVerb()
     {
-        return pendingVerbs.Peek();
+        return HasQueuedVerb ? pendingVerbs.Peek() : null;
     }
 
     public void NextVerb()

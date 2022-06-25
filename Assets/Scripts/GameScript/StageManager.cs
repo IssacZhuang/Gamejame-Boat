@@ -27,15 +27,24 @@ public class StageManager : GameComponent
         base.GameFixedUpdate();
         if (isVerbStarted)
         {
-            if (currentCharacter == null || currentCharacter.VerbTracker.PeekVerb() == null)
+            if (!characters.Any(x=>x.VerbTracker.HasQueuedVerb))
             {
+                UnityEngine.Debug.Log("stopped");
                 StopQueuedVerbs();
             }
+
+            if (currentCharacter.VerbTracker.IsCurrentVerbFinished || (!currentCharacter.VerbTracker.HasQueuedVerb && !currentCharacter.VerbTracker.IsCurrentVerbOnGoing))
+            {
+                NextCharacter();
+            }
+
 
             if (!currentCharacter.VerbTracker.IsCurrentVerbOnGoing)
             {
                 currentCharacter.VerbTracker.NextVerb();
             }
+
+
         }
     }
 
