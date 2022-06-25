@@ -7,37 +7,25 @@ using Scaffold;
 
 public class Projectile : Thing
 {
-    public Vector2 Direction
-    {
-        get
-        {
-            return direction;
-        }
-        set
-        {
-            direction = value;
-        }
-    }
-
     public Action ActionVerbEnd;
 
-    private GameObject projectile;
-    private float speed = 5.0f;
-    private Vector2 direction;
+    public float speed = 5.0f;
+    public Vector3 direction;
     private long startTime;
-    
 
-    // Start is called before the first frame update
-    void Start()
+
+
+    public override void ThingPostStart()
     {
+        base.ThingPostStart();
         startTime = Find.CurrentGame.GlobalTick;
+        direction.Normalize();
     }
 
     // Update is called once per frame
     public override void ThingFixedUpdate()
     {
-        projectile.transform.Translate(new Vector3(direction.x * speed * Time.deltaTime, 0, direction.y * speed * Time.deltaTime));
-
+        ProjectileMove();
         //越界判断
         if (Find.CurrentGame.GlobalTick - startTime > 50 * 5) //at most last 5s
         {
@@ -46,6 +34,13 @@ public class Projectile : Thing
         }
     }
 
+    public virtual void ProjectileMove()
+    {
+        transform.Translate(new Vector3(direction.x * speed * Time.fixedDeltaTime, direction.y * speed * Time.fixedDeltaTime, direction.z * speed * Time.fixedDeltaTime));
+    }
+
+
+
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -53,8 +48,8 @@ public class Projectile : Thing
         if (character != null)
         {
             HitCharacter(character);
-            Destroy();
         }
+        Destroy();
     }
 
     public virtual void HitCharacter(Character character)

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9182707657792371965}
   - component: {fileID: 5841110525136659054}
-  - component: {fileID: 2233564697351358868}
+  - component: {fileID: 83161748137807045}
   m_Layer: 0
   m_Name: SplitFireBall
   m_TagString: Untagged
@@ -47,7 +47,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2233564697351358868
+--- !u!114 &83161748137807045
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -56,12 +56,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1145700320164870369}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f2ea64312f10486ca8a2266d457f439, type: 3}
+  m_Script: {fileID: 11500000, guid: 65d85fb8c91859b44b02096fb99bd6cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction: {x: 0, y: 0}
-  deviateDegree: 0
   speed: 5
+  direction: {x: 0, y: 0, z: 0}
 --- !u!1 &4892028204460224464
 GameObject:
   m_ObjectHideFlags: 0

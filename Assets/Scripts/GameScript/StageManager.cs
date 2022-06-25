@@ -5,33 +5,37 @@ using UnityEngine;
 using Scaffold;
 public class StageManager : GameComponent
 {
-    int term;
-    List<Character> characterList;
+    public GameObject playerPrefab;
+    public Transform[] spawnPoints;
+
+    private List<Character> characters = new List<Character>();
 
     public void StartNewStage()
     {
-        term++;
-        characterList = new List<Character>();
+        
     }
 
     public void AddNewCharacter()
     {
-        characterList.Add(new Character());
+        if (playerPrefab == null)
+        {
+            Debug.LogError("No playerPrefab set");
+            return;
+        }
+
+        if (characters.Count >= spawnPoints.Length)
+        {
+            Debug.LogError("No spawn point for new player");
+            return;
+        }
+
+        GameObject player = GameObject.Instantiate(playerPrefab);
+        Character character = player.GetComponent<Character>();
+        characters.Add(character);
+        character.transform.position = spawnPoints[characters.Count - 1].position;
     }
 
     public void StageTick()
-    {
-
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        term = 0;
-
-    }
-
-    // Update is called once per frame
-    void Update()
     {
 
     }
