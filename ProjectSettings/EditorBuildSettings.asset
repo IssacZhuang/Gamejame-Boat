@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/StartMenu.unity
     guid: 1ed21a7787587f349a0561d5641e4e58
   - enabled: 1
-    path: Assets/Scenes/TestSceneYiming.unity
+    path: Assets/Scenes/TestSceneCharlie.unity
     guid: 9c960d1e2a3e140dca842ce4bdd0d800
   m_configObjects: {}
