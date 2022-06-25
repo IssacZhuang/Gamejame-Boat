@@ -94,6 +94,7 @@ public class StageManager : GameComponent
 
     public void StartQueuedVerbs()
     {
+        SortCharacter();
         isVerbStarted = true;
     }
 
