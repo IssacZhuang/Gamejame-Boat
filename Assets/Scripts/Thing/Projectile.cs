@@ -41,7 +41,12 @@ public class Projectile : Thing
         Character character = collision.gameObject.GetComponent<Character>();
         if (character != null)
         {
-            character.BuffTracker.TryAddBuff(BuffDefOf.attack);
+            HitCharacter(character);
         }
+    }
+
+    public virtual void HitCharacter(Character character)
+    {
+        character.BuffTracker.TryAddBuff(BuffDefOf.attack);
     }
 }

@@ -12,8 +12,9 @@ public class Test_VebMove : ThingComponent
         Verb_Move move = new Verb_Move();
         move.TrySetTarget(new TargetInfo { location = new Vector3(1, 0, 1) });
         Character character = parent as Character;
-        character?.VerbTracker.AddVerb(move);
-        character?.VerbTracker.NextVerb();
+    
+        character.VerbTracker.AddVerb(move);
+        character.VerbTracker.NextVerb();
 
     }
 }

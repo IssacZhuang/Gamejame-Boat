@@ -18,7 +18,7 @@ public class Verb_Move : Verb
     {
         from = this.parent.transform.position;
         direction = Target.location - from;
-        return true;
+        return base.TryCastVerb();
     }
 
     public override void VerbTick()

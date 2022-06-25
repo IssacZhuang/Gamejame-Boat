@@ -10,6 +10,7 @@ public class BuffDef :Def
     {
         this.defName = defName;
     }
+
     public float initialSeverity;
     public Type workerClass = typeof(Buff); //default worker class
     public List<BuffDef> immuniteBuffs = new List<BuffDef> ();
