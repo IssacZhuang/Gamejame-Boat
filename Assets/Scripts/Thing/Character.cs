@@ -25,6 +25,8 @@ public class Character : Thing
     public BuffTracker BuffTracker { get; private set; }
     public VerbTracker VerbTracker { get; private set; }
 
+    public List<VerbDef> VerbInhand { get; private set; } = new List<VerbDef>();
+
     public override void InitData()
     {
 
