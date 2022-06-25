@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class Verb
 {
+    public TargetInfo Target => target;
     private TargetInfo target;
 
-    private bool isEnded = false;
+    private bool isEnded = true;
     public bool IsEnded => isEnded;
     public Character parent;
 
@@ -30,14 +31,15 @@ public class Verb
 
     public virtual bool TryCastVerb()
     {
+        isEnded = false;
         return true;
     }
 
     public virtual void VerbTick()
     {
-        if (ShouldEndVerb)
+        if (ShouldEndVerb && !isEnded)
         {
-            isEnded= true;
+            isEnded = true;
             OnVerbEnd();
             return;
         }

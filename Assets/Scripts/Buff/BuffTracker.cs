@@ -60,9 +60,18 @@ public class BuffTracker
 
     public void RemoveBuff(BuffDef def)
     {
-        foreach(var buff in buffs.Where(x => x.def == def))
+        int tmpLength = buffs.Count;
+        int i = 0;
+        while (i < tmpLength)
         {
-            buffs.Remove(buff);
+            tmpBuff = buffs.ElementAt(i);
+            if (tmpBuff.def == def)
+            {
+                buffs.Remove(tmpBuff);
+                tmpLength--;
+                continue;
+            }
+            i++;
         }
     }
 

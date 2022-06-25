@@ -8,14 +8,15 @@ public class VerbTracker
     private Queue<Verb> pendingVerbs = new Queue<Verb>();
     private Character parent;
 
-    public VerbTracker(Character parent)
+    public VerbTracker(Character character)
     {
-        this.parent = parent;
+        this.parent = character;
     }
 
     public void VerbTrackerTick()
     {
-        currentVerb?.VerbTick();
+        if (currentVerb != null && !currentVerb.IsEnded) currentVerb.VerbTick();
+
     }
 
     public void AddVerb(Verb verb)
@@ -29,7 +30,12 @@ public class VerbTracker
         if (currentVerb != null && !currentVerb.IsEnded)
         {
             currentVerb.OnVerbEnd();
+            currentVerb = null;
         }
-        currentVerb = pendingVerbs.Peek();
+        if (pendingVerbs.Count > 0)
+        {
+            currentVerb = pendingVerbs.Dequeue();
+        }
+        currentVerb?.TryCastVerb();
     }
 }

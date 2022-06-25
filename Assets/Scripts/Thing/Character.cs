@@ -9,8 +9,6 @@ public class Character : Thing
     public bool IsKilled => isKilled;
     private bool isKilled = false;
 
-    public virtual Vector3 DrawPos => this.transform.position;
-
     public float Health
     {
         get
@@ -27,8 +25,9 @@ public class Character : Thing
     public BuffTracker BuffTracker { get; private set; }
     public VerbTracker VerbTracker { get; private set; }
 
-    public Character()
+    public override void InitData()
     {
+
         BuffTracker = new BuffTracker(this);
         VerbTracker = new VerbTracker(this);
     }

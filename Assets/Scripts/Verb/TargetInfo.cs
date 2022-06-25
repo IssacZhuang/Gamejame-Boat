@@ -6,6 +6,6 @@ public struct TargetInfo
 {
     public bool IsCharacter => targetCharacter != null;
 
-    public Vector2 location;
+    public Vector3 location;
     public Character targetCharacter;
 }

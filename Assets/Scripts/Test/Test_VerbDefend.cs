@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Test_VerbDefend : MonoBehaviour
+using Scaffold;
+
+public class Test_VerbDefend : ThingComponent
 {
-    void Start()
+    public override void CompPostStart()
     {
+        base.CompPostStart();
         Debug.Log("[Test] verb defend ----------------");
-        Character player = new Character();
+        Character player = parent as Character;
         Debug.Log("Health before attakced: " + player.Health);
         player.BuffTracker.TryAddBuff(BuffDefOf.attack);
         Debug.Log("Health after attakced: " + player.Health);

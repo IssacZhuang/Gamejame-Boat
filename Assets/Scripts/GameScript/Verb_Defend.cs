@@ -6,9 +6,8 @@ public class Verb_Defend : Verb
 {
     public override bool TryCastVerb()
     {
-        return base.TryCastVerb();
         parent.BuffTracker.TryAddBuff(BuffDefOf.defend);
-
+        return base.TryCastVerb();
     }
 
     public override void OnVerbEnd()
