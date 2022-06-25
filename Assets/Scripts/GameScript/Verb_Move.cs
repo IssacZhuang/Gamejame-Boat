@@ -23,10 +23,10 @@ public class Verb_Move : Verb
 
     public override void VerbTick()
     { 
-        Debug.Log("progress: " + progress);
+        //Debug.Log("progress: " + progress);
         progress += progressStep;
         tmpDirection = direction * progress;
-        tmpDirection.Set(tmpDirection.x, 0, tmpDirection.x);
+        tmpDirection.Set(tmpDirection.x, 0, tmpDirection.z);
         parent.transform.position = from + tmpDirection;
 
         base.VerbTick();
