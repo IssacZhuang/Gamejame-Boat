@@ -11,6 +11,8 @@ public class Verb
     public bool IsEnded => isEnded;
     public Character parent;
 
+    public VerbDef def;
+
     public bool TrySetTarget(TargetInfo info)
     {
         Debug.Log("info.location.x:"+ info.location.x);
