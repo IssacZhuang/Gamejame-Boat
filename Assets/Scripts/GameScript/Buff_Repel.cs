@@ -10,6 +10,8 @@ public class Buff_Repel : Buff
 
     private float distanceMoved = 0f;
 
+    public override bool MarkAsRemove => distanceMoved >= distance || parent == null;
+
     public override void BuffPostAdd()
     {
         direction.Normalize();
@@ -18,7 +20,6 @@ public class Buff_Repel : Buff
     public override void BuffTick()
     {
         base.BuffTick();
-        if (distanceMoved >= distance || parent == null) OnRemoved();
         Vector3 displacement = direction * Time.fixedDeltaTime * speed;
         this.parent.transform.position += displacement;
 
