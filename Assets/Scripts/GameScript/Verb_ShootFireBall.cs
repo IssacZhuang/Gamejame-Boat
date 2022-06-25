@@ -11,7 +11,7 @@ public class Verb_ShootFireBall : Verb
     public override bool TryCastVerb()
     {
         GameObject projectile = GameObject.Instantiate(objct);
-        projectile.transform.parent = this.parent.transform;
+        //projectile.transform.parent = this.parent.transform;
         Projectile thing = projectile.GetComponent<Projectile>();
         // Something <Projectile_FireBall> defined need to fill
         // for direction
@@ -21,6 +21,8 @@ public class Verb_ShootFireBall : Verb
         };
         Vector3 from = this.parent.transform.position;
         thing.direction = new Vector3(Target.location.x - from.x,0, Target.location.z - from.z);
+        thing.transform.position = from + thing.direction.normalized;
+
         // Call end script verb when verb end
         thing.ActionVerbEnd = () =>
         {
