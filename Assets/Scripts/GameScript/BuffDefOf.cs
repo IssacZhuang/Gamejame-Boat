@@ -4,17 +4,36 @@ using UnityEngine;
 
 public static class BuffDefOf
 {
+    // Original buff define
     public static BuffDef attack = new BuffDef("Buff_Attacked");
     public static BuffDef defend = new BuffDef("Buff_Defend");
-    public static BuffDef hugDamage = new BuffDef("Buff_HugDamage");
+    // Init multiple attack type
+    public static BuffDef fireBallAttack = new BuffDef("Buff_FireBallAttack");
+    public static BuffDef splitFireBallAttack = new BuffDef("Buff_SplitFireBallAttack");
+    public static BuffDef meteoriteAttack = new BuffDef("Buff_MeteoriteAttack");
     static BuffDefOf()
     {
-        attack.initialSeverity = 25;
+        // Sample Attack code (we will not use it)
+        attack.initialSeverity = 10;
         attack.workerClass = typeof(Buff_Attacked);
 
-        hugDamage.initialSeverity = 70;
-        hugDamage.workerClass = typeof(Buff_Attacked);
+        // For Fireball Attack
+        fireBallAttack.initialSeverity = 10;
+        fireBallAttack.workerClass = typeof(Buff_Attacked);
 
+        // For Meteorite Attack
+        meteoriteAttack.initialSeverity = 20;
+        meteoriteAttack.workerClass = typeof(Buff_Attacked);
+
+
+        // For Split Fire Ball Attack
+        fireBallAttack.initialSeverity = 10;
+        fireBallAttack.workerClass = typeof(Buff_Attacked);
+
+        // Defend All Attack
         defend.immuniteBuffs.Add(attack);
+        defend.immuniteBuffs.Add(fireBallAttack);
+        defend.immuniteBuffs.Add(meteoriteAttack);
+        defend.immuniteBuffs.Add(fireBallAttack);
     }
 }
