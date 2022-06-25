@@ -123,6 +123,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2792111418458923675}
   - component: {fileID: 4603592432825068413}
+  - component: {fileID: 9155356638399012620}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Untagged
@@ -158,6 +159,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 906a9c61d77eee2479114d8e60f990e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &9155356638399012620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2674660961762900118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e46e4c6be6b5bc4d99f85e517d06ec7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2749919822205708150
@@ -301,7 +314,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -1.800003, y: 0}
+  m_AnchoredPosition: {x: -1.8000183, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6410024417553145841
