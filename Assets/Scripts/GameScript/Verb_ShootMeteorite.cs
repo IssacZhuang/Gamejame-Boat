@@ -11,8 +11,7 @@ public class Verb_ShootMeteorite : Verb
     public override bool TryCastVerb()
     {
         GameObject projectile = GameObject.Instantiate(objct);
-        // set transform
-        projectile.transform.parent = this.parent.transform;
+
         // set position
         var positionCreated = this.parent.transform.position + new Vector3(0, 5, 0);
         projectile.transform.position = positionCreated;

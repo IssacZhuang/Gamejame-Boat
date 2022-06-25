@@ -12,15 +12,12 @@ public class Verb_ShootSplitFireBall : Verb
     {
         // init object
         GameObject projectileMain = GameObject.Instantiate(objct);
-        projectileMain.transform.parent = this.parent.transform;
         Projectile fireBallMain = projectileMain.GetComponent<Projectile>();
 
         GameObject projectileUpper = GameObject.Instantiate(objct);
-        projectileUpper.transform.parent = this.parent.transform;
         Projectile fireBallUpper = projectileUpper.GetComponent<Projectile>();
 
         GameObject projectileLower = GameObject.Instantiate(objct);
-        projectileLower.transform.parent = this.parent.transform;
         Projectile fireBallLower = projectileLower.GetComponent<Projectile>();
 
 
