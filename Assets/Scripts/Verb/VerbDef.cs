@@ -10,6 +10,16 @@ public class VerbDef : Def
     public int priority;
     public Type workerClass = typeof(Verb);
 
+    public VerbDef()
+    {
+
+    }
+
+    public VerbDef(string defName)
+    {
+        this.defName = defName;
+    }
+
     public Verb CreateVerb()
     {
         Verb verb = (Verb)Activator.CreateInstance(this.workerClass);
