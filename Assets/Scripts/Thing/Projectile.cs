@@ -39,9 +39,6 @@ public class Projectile : Thing
         transform.Translate(new Vector3(direction.x * speed * Time.fixedDeltaTime, direction.y * speed * Time.fixedDeltaTime, direction.z * speed * Time.fixedDeltaTime));
     }
 
-
-
-
     private void OnCollisionEnter(Collision collision)
     {
         Character character = collision.gameObject.GetComponent<Character>();
@@ -56,5 +53,9 @@ public class Projectile : Thing
     {
         if (ActionVerbEnd != null) ActionVerbEnd();
         character.BuffTracker.TryAddBuff(BuffDefOf.attack);
+        // define a repel buff
+        Buff_Repel repelBuff = (Buff_Repel)BuffDefOf.repelDebuff.CreateBuff();
+        repelBuff.direction = direction;
+        character.BuffTracker.TryAddBuff(repelBuff);
     }
 }
