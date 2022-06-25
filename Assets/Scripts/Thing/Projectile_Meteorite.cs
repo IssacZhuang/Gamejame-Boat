@@ -5,27 +5,17 @@ using UnityEngine;
 
 using Scaffold;
 
-public class Projectile : Thing
+public class Projectile_Meteorite : Thing
 {
-    public Vector2 Direction
-    {
-        get
-        {
-            return direction;
-        }
-        set
-        {
-            direction = value;
-        }
-    }
-
+    // predefined parameter 
+    public Vector3 fromDirection;
+    public Vector3 toDirection;
+    public float speed = 5.0f;
+    // for callback action verb
     public Action ActionVerbEnd;
-
-    private GameObject projectile;
-    private float speed = 5.0f;
-    private Vector2 direction;
+    // for other two directions
     private long startTime;
-    
+
 
     // Start is called before the first frame update
     void Start()
@@ -33,10 +23,11 @@ public class Projectile : Thing
         startTime = Find.CurrentGame.GlobalTick;
     }
 
-    // Update is called once per frame
     public override void ThingFixedUpdate()
     {
-        projectile.transform.Translate(new Vector3(direction.x * speed * Time.deltaTime, 0, direction.y * speed * Time.deltaTime));
+        var targetDirection = Vector3.Normalize(toDirection - fromDirection);
+        this.transform.Translate(new Vector3(targetDirection.x * speed * Time.deltaTime, targetDirection.y * speed * Time.deltaTime, targetDirection.z * speed * Time.deltaTime));
+
 
         //越界判断
         if (Find.CurrentGame.GlobalTick - startTime > 50 * 5) //at most last 5s
@@ -46,7 +37,6 @@ public class Projectile : Thing
         }
     }
 
-
     private void OnCollisionEnter(Collision collision)
     {
         Character character = collision.gameObject.GetComponent<Character>();
@@ -55,11 +45,17 @@ public class Projectile : Thing
             HitCharacter(character);
             Destroy();
         }
+        else
+        {
+            // if collited floor
+            Destroy();
+        }
     }
 
-    public virtual void HitCharacter(Character character)
+
+    public void HitCharacter(Character character)
     {
         if (ActionVerbEnd != null) ActionVerbEnd();
-        character.BuffTracker.TryAddBuff(BuffDefOf.attack);
+        character.BuffTracker.TryAddBuff(BuffDefOf.splitFireBallAttack);
     }
 }

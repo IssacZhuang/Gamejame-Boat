@@ -13,6 +13,9 @@ public class Verb
 
     public bool TrySetTarget(TargetInfo info)
     {
+        Debug.Log("info.location.x:"+ info.location.x);
+        Debug.Log("info.location.y:"+ info.location.y);
+        Debug.Log("info.location.z:"+ info.location.z);
         if (TargetValidator(info))
         {
             target = info;

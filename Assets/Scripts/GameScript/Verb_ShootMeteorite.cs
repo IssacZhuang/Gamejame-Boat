@@ -4,23 +4,23 @@ using UnityEngine;
 
 using Scaffold;
 
-public class Verb_ShootFireBall : Verb
+public class Verb_ShootMeteorite : Verb
 {
     public GameObject objct;
 
     public override bool TryCastVerb()
     {
         GameObject projectile = GameObject.Instantiate(objct);
+        // set transform
         projectile.transform.parent = this.parent.transform;
-        Projectile_FireBall thing = projectile.GetComponent<Projectile_FireBall>();
-        // Something <Projectile_FireBall> defined need to fill
-        // for direction
-        thing.ActionVerbEnd = () =>
-        {
-            this.OnVerbEnd();
-        };
-        Vector3 from = this.parent.transform.position;
-        thing.direction = new Vector2(Target.location.x - from.x, Target.location.z - from.z);
+        // set position
+        var positionCreated = this.parent.transform.position + new Vector3(0, 5, 0);
+        projectile.transform.position = positionCreated;
+
+        Projectile_Meteorite thing = projectile.GetComponent<Projectile_Meteorite>();
+        // some thing define need to fill
+        thing.fromDirection = positionCreated;
+        thing.toDirection = Target.location;
         // Call end script verb when verb end
         thing.ActionVerbEnd = () =>
         {
@@ -30,7 +30,6 @@ public class Verb_ShootFireBall : Verb
 
         // invoke
         GameObject.Find("GameManager").GetComponent<Game>().RegisterThing(thing);
-
         return base.TryCastVerb();
     }
 }
