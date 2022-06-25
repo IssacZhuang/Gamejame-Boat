@@ -28,8 +28,8 @@ public class Character : Thing
     public override void InitData()
     {
 
-        BuffTracker = new BuffTracker(this);
-        VerbTracker = new VerbTracker(this);
+        if (BuffTracker == null) BuffTracker = new BuffTracker(this);
+        if (VerbTracker == null) VerbTracker = new VerbTracker(this);
     }
 
     public override void ThingPostStart()
