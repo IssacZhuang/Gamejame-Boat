@@ -14,10 +14,13 @@ public class Test_VerbDefend : ThingComponent
         Debug.Log("Health before attakced: " + player.Health);
         player.BuffTracker.TryAddBuff(BuffDefOf.attack);
         Debug.Log("Health after attakced: " + player.Health);
+
         Debug.Log("Now player start Verb_Defend.");
         player.VerbTracker.AddVerb(new Verb_Defend());
         player.VerbTracker.NextVerb();
+        player.BuffTracker.TryAddBuff(BuffDefOf.attack);
         Debug.Log("Health after defend the attack: " + player.Health);
+
         player.VerbTracker.NextVerb();
         Debug.Log("Now move to next verb, Verb_Defend end.");
         Debug.Log("Health before attakced: " + player.Health);
