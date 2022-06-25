@@ -5,7 +5,7 @@ using UnityEngine;
 public class Buff_Repel : Buff
 {
     public Vector3 direction;
-    public float distance = 1.5f;
+    public float distance = 0.3f;
     public float speed = 3f;
 
     private float distanceMoved = 0f;
