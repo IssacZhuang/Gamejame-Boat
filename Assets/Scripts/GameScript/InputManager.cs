@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 using Scaffold;
 public class InputManager : GameComponent
 {
@@ -11,6 +11,7 @@ public class InputManager : GameComponent
     public void StartGame()
     {
         //gameManager.StartGame();
+        SceneManager.LoadScene("TestSceneYiMing");
     }
 
     public void ExitGame()
