@@ -18,10 +18,11 @@ public class Buff_Repel : Buff
     public override void BuffTick()
     {
         base.BuffTick();
+        if (distanceMoved >= distance || parent == null) OnRemoved();
         Vector3 displacement = direction * Time.fixedDeltaTime * speed;
         this.parent.transform.position += displacement;
 
         distanceMoved += displacement.sqrMagnitude;
-        if (distanceMoved >= distance) OnRemoved();
+        
     }
 }
