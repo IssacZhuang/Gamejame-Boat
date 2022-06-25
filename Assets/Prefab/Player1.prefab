@@ -124,8 +124,9 @@ GameObject:
   - component: {fileID: 2792111418458923675}
   - component: {fileID: 4603592432825068413}
   - component: {fileID: 9155356638399012620}
-  - component: {fileID: 5914293165583441602}
-  - component: {fileID: 6270790123456555922}
+  - component: {fileID: 7372255594756953285}
+  - component: {fileID: 1289908131905019514}
+  - component: {fileID: 3118754823884733058}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Untagged
@@ -227,7 +228,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2749919822205708150}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: -0.131}
   m_LocalScale: {x: 0.025, y: 0.025, z: 0.025}
   m_ConstrainProportionsScale: 1
@@ -237,7 +238,7 @@ RectTransform:
   - {fileID: 1011521798872480967}
   m_Father: {fileID: 1554074102973631000}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 1.597}
