@@ -105,6 +105,17 @@ public class StageManager : GameComponent
         }
     }
 
+    public void SetCharacterVerbs(Dictionary<Character, List<Verb>> verbs)
+    {
+        foreach (var character in characters)
+        {
+            foreach(var verb in verbs[character])
+            {
+                character.VerbTracker.AddVerb(verb);
+            }
+        }
+    }
+
     private int Compare(Character a, Character b)
     {
         Verb verbA = a.VerbTracker.PeekVerb();
