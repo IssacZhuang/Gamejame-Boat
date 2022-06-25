@@ -31,7 +31,6 @@ using UnityEngine.UI;
 		/// </summary>
 		void Update()
 		{
-
 		displayBar.GetComponent<Slider>().value = player.GetComponent<Character>().Health / m_MaxHealth;
 
 	}
