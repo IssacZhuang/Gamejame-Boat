@@ -21,6 +21,8 @@ public class Test_VebMove : ThingComponent
             //第四个参数是一个表示二进制位的数  比如第四个参数为5的时候  只有第0层和第2层可以别检测 因为5的二进制码是  101
             if (Physics.Raycast(ray, out hit, 100, 5))
             {
+                Debug.Log(hit.point.x);
+                Debug.Log(hit.point.z);
                 move.TrySetTarget(new TargetInfo { location = new Vector3(hit.point.x, character.transform.position.y, hit.point.z) });
             }
 
