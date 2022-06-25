@@ -24,6 +24,7 @@ public class Verb_ShootSplitFireBall : Verb
         // some thing define need to fill
         Vector3 from = this.parent.transform.position;
         fireBallMain.direction = new Vector3(Target.location.x - from.x, 0, Target.location.z - from.z);
+        fireBallMain.transform.position = from + fireBallMain.direction.normalized * 3f;
         // Call end script verb when verb end
         fireBallMain.ActionVerbEnd = () =>
         {
@@ -33,6 +34,7 @@ public class Verb_ShootSplitFireBall : Verb
 
         fireBallUpper.direction = new Vector3(Target.location.x - from.x, 0, Target.location.z - from.z);
         fireBallUpper.direction = Quaternion.Euler(0, 30f, 0) * fireBallUpper.direction;
+        fireBallUpper.transform.position = from + fireBallUpper.direction.normalized * 3f;
         // Call end script verb when verb end
         fireBallUpper.ActionVerbEnd = () =>
         {
@@ -43,6 +45,7 @@ public class Verb_ShootSplitFireBall : Verb
 
         fireBallLower.direction = new Vector3(Target.location.x - from.x, 0, Target.location.z - from.z);
         fireBallLower.direction = Quaternion.Euler(0, -30f, 0) * fireBallLower.direction;
+        fireBallLower.transform.position = from + fireBallLower.direction.normalized * 3f;
         // Call end script verb when verb end
         fireBallLower.ActionVerbEnd = () =>
         {
