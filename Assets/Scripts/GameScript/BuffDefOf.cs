@@ -11,6 +11,8 @@ public static class BuffDefOf
     public static BuffDef fireBallAttack = new BuffDef("Buff_FireBallAttack");
     public static BuffDef splitFireBallAttack = new BuffDef("Buff_SplitFireBallAttack");
     public static BuffDef meteoriteAttack = new BuffDef("Buff_MeteoriteAttack");
+    public static BuffDef repelDebuff = new BuffDef("Buff_Repel");
+
     static BuffDefOf()
     {
         // Sample Attack code (we will not use it)
@@ -29,6 +31,9 @@ public static class BuffDefOf
         // For Split Fire Ball Attack
         fireBallAttack.initialSeverity = 10;
         fireBallAttack.workerClass = typeof(Buff_Attacked);
+
+        // for repel debuff
+        repelDebuff.workerClass = typeof(Buff_Repel);
 
         // Defend All Attack
         defend.immuniteBuffs.Add(attack);
