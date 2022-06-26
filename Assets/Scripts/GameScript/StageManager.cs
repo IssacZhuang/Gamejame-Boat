@@ -7,13 +7,13 @@ using UnityEngine;
 using Scaffold;
 public class StageManager : GameComponent
 {
-    public GameObject playerPrefab;
+    public GameObject[] playerPrefab;
     public Transform[] spawnPoints;
 
     public InteractionManager interactionManager;
     public InputManager inputManager;
 
-    private int playerLimit = 4;
+    private int playerLimit;
 
 
     public List<Character> Characters => characters;
@@ -54,7 +54,7 @@ public class StageManager : GameComponent
         }
     }
 
-    public void AddNewCharacter()
+    public void AddNewCharacter(int i)
     {
         //UnityEngine.Debug.Log("Add new character");
         if (playerPrefab == null)
@@ -69,7 +69,8 @@ public class StageManager : GameComponent
             return;
         }
         //UnityEngine.Debug.Log("New character generated");
-        GameObject player = GameObject.Instantiate(playerPrefab);
+        
+        GameObject player = GameObject.Instantiate(playerPrefab[i]);
         Character character = player.GetComponent<Character>();
         character.InitData();
 
@@ -99,9 +100,11 @@ public class StageManager : GameComponent
 
     public void StartNewStage()
     {
+        playerLimit = playerPrefab.Length;
+
         for (int i = 0; i < playerLimit; i++)
         {
-            AddNewCharacter();
+            AddNewCharacter(i % 2);
         }
         UnityEngine.Debug.Log(characters.Count);
 

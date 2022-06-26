@@ -12,7 +12,6 @@ public class InteractionManager : MonoBehaviour
     public GameObject defendCard;
     public GameObject movementCard;
     public GameObject peekCard;
-    public GameObject playerPrefab;
     public Transform CardUIParentTransform;
     private List<CardScript> cardList;
 

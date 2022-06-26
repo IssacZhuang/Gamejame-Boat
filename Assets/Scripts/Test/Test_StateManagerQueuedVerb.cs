@@ -14,7 +14,7 @@ public class Test_StateManagerQueuedVerb:GameComponent
         StageManager stageManager = GetComponent<StageManager>();
         for (int i = 0; i < 2; i++)
         {
-            stageManager.AddNewCharacter();
+            stageManager.AddNewCharacter(i%2);
         }
 
         Verb playerOneMove = VerbDefOf.movementBasic.CreateVerb();

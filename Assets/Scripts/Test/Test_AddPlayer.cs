@@ -11,7 +11,7 @@ public class Test_AddPlayer : GameComponent
         StageManager stageManager = GetComponent<StageManager>();
         for(int i = 0; i < 4; i++)
         {
-            stageManager.AddNewCharacter();
+            stageManager.AddNewCharacter(i%2);
         }
         
     }
