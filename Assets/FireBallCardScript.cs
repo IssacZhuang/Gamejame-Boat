@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class FireBallCardScript : MonoBehaviour
 {
-    public Button yourButton;
+    public Button cardButton;
+    public Button selectedButton;
     public GameObject fireBall;
     bool isClicked = false;
     Character player;
@@ -18,8 +19,11 @@ public class FireBallCardScript : MonoBehaviour
         shoot = (Verb_ShootFireBall)VerbDefOf.attackFireball.CreateVerb();
         player = script.owner;
 
-        Button btn = yourButton.GetComponent<Button>();
+        Button btn = cardButton.GetComponent<Button>();
         btn.onClick.AddListener(TaskOnClick);
+
+        Button seletbtn = selectedButton.GetComponent<Button>();
+        seletbtn.onClick.AddListener(TaskOnReadyClick);
     }
 
     // Update is called once per frame
@@ -40,8 +44,8 @@ public class FireBallCardScript : MonoBehaviour
                     
                 }
 
-                player.VerbTracker.AddVerb(shoot);
-                player.VerbTracker.NextVerb();
+                //player.VerbTracker.AddVerb(shoot);
+                //player.VerbTracker.NextVerb();
             }
 
         }
@@ -51,10 +55,20 @@ public class FireBallCardScript : MonoBehaviour
 
         //}
     }
+
+    public void TaskOnReadyClick()
+    {
+        if (this.isClicked)
+        {
+            interactionManager.FillSlot(shoot);
+            isClicked = false;
+        }
+
+    }
+
     public void TaskOnClick()
     {
 
-        interactionManager.FillSlot(shoot);
         isClicked = true;
 
     }

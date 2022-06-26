@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class DefendCardScript : MonoBehaviour
 {
-    public Button yourButton;
+    public Button cardButton;
+    public Button selectedButton;
     public GameObject shieldObj;
     bool isClicked = false;
     Character player;
@@ -20,8 +21,11 @@ public class DefendCardScript : MonoBehaviour
         shield = (Verb_Defend)VerbDefOf.defendBasic.CreateVerb();
         player = script.owner;
 
-        Button btn = yourButton.GetComponent<Button>();
+        Button btn = cardButton.GetComponent<Button>();
         btn.onClick.AddListener(TaskOnClick);
+
+        Button seletbtn = selectedButton.GetComponent<Button>();
+        seletbtn.onClick.AddListener(TaskOnReadyClick);
     }
 
     // Update is called once per frame
@@ -29,29 +33,31 @@ public class DefendCardScript : MonoBehaviour
     {
         if (isClicked)
         {
-            if (!isShieldGenerated)
-            {
-                // add the defend verb into the queue
-                Verb_Defend shield = (Verb_Defend)VerbDefOf.defendBasic.CreateVerb();
+            Verb_Defend shield = (Verb_Defend)VerbDefOf.defendBasic.CreateVerb();
 
-                shield.objct = shieldObj;
-
-                player.VerbTracker.AddVerb(shield);
-                player.VerbTracker.NextVerb();
-                isShieldGenerated = true;
-            }
+            //if (!isShieldGenerated)
+            //{
+            //    // add the defend verb into the queue
+            //    // Verb_Defend shield = (Verb_Defend)VerbDefOf.defendBasic.CreateVerb();
+            //    //shield.objct = shieldObj;
+            //    //player.VerbTracker.AddVerb(shield);
+            //    //player.VerbTracker.NextVerb();
+            //    //isShieldGenerated = true;
+            //}
 
         }
+    }
+    public void TaskOnReadyClick()
+    {
+        if (isClicked)
+        {
+            interactionManager.FillSlot(shield);
+            isClicked = false;
+        }
 
-        //if (player.VerbTracker.pendingVerbs.Count != 0 && player.VerbTracker.pendingVerbs.Count == 2)
-        //{
-
-        //}
     }
     public void TaskOnClick()
     {
-
-        interactionManager.FillSlot(shield);
         isClicked = true;
 
     }

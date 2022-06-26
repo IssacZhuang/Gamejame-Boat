@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class MoveCardScript : MonoBehaviour
 {
-    public Button yourButton;
+    public Button cardButton;
+    public Button selectedButton;
     bool isClicked = false;
     Character player;
     public InteractionManager interactionManager;
@@ -17,8 +18,11 @@ public class MoveCardScript : MonoBehaviour
         move = (Verb_Move)VerbDefOf.movementBasic.CreateVerb();
         player = script.owner;
 
-        Button btn = yourButton.GetComponent<Button>();
+        Button btn = cardButton.GetComponent<Button>();
         btn.onClick.AddListener(TaskOnClick);
+
+        Button seletbtn = selectedButton.GetComponent<Button>();
+        seletbtn.onClick.AddListener(TaskOnReadyClick);
     }
 
     // Update is called once per frame
@@ -38,8 +42,8 @@ public class MoveCardScript : MonoBehaviour
 
                 }
 
-                player.VerbTracker.AddVerb(move);
-                player.VerbTracker.NextVerb();
+                //player.VerbTracker.AddVerb(move);
+                //player.VerbTracker.NextVerb();
             }
 
         }
@@ -49,11 +53,18 @@ public class MoveCardScript : MonoBehaviour
 
         //}
     }
+    public void TaskOnReadyClick()
+    {
+        if (this.isClicked)
+        {
+            interactionManager.FillSlot(move);
+            isClicked = false;
+        }
 
+    }
 
     public void TaskOnClick()
     {
-        interactionManager.FillSlot(move);
         isClicked = true;
 
     }

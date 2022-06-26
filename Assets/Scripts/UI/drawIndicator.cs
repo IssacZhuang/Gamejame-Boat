@@ -13,17 +13,11 @@ public class drawIndicator : MonoBehaviour
 
     public void Update()
     {
-
-
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        Verb_Move move = new Verb_Move();
-
-        //??????????????
-        RaycastHit hit;
-        player = GameObject.Find("Player1(Clone)");
-
+        //player = GameObject.Find("Player1(Clone)");
         if (player != null)
         {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
             if (Physics.Raycast(ray, out hit, 100, 5))
             {
                 Vector3 location = new Vector3(hit.point.x, hit.point.y + 0.2f, hit.point.z);
@@ -44,10 +38,17 @@ public class drawIndicator : MonoBehaviour
 
             }
         }
-
-
-
         // will make the mesh appear in the Scene at origin position
         //Graphics.DrawMesh(arrowMesh, Vector3.zero, Quaternion.identity, arrowMaterial, 0);
     }
+
+    public void SetPlayer(GameObject targetPlayer)
+    {
+        player = targetPlayer;
+    }
+    public void UnsetPlayer(GameObject targetPlayer)
+    {
+        player = null;
+    }
+
 }
