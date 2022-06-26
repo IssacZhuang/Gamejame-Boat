@@ -6,10 +6,13 @@ public class Verb_Peek : Verb
 {
     public Character targetCharacter;
 
-    public void AssignTarget(GameObject c)
+    public void AssignTarget(Character c)
     {
         targetCharacter = c.GetComponent<Character>();
     }
-
+    public override bool TryCastVerb()
+    {
+        return base.TryCastVerb();
+    }
 }
 

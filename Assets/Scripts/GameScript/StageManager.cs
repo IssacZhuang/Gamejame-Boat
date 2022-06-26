@@ -33,7 +33,7 @@ public class StageManager : GameComponent
         base.GameFixedUpdate();
         if (isVerbStarted)
         {
-            if (!characters.Any(x=>x.VerbTracker.HasQueuedVerb))
+            if (!characters.Any(x => x.VerbTracker.HasQueuedVerb))
             {
                 UnityEngine.Debug.Log("stopped");
                 StopQueuedVerbs();
@@ -69,7 +69,7 @@ public class StageManager : GameComponent
             return;
         }
         //UnityEngine.Debug.Log("New character generated");
-        
+
         GameObject player = GameObject.Instantiate(playerPrefab[i]);
         Character character = player.GetComponent<Character>();
         character.InitData();
@@ -80,7 +80,7 @@ public class StageManager : GameComponent
         character.VerbInhand.Add(VerbDefOf.peek);
 
         characters.Add(character);
-        character.transform.position = spawnPoints[characters.Count-1].position;
+        character.transform.position = spawnPoints[characters.Count - 1].position;
     }
 
     public void NextCharacter()
@@ -131,7 +131,7 @@ public class StageManager : GameComponent
 
     public void DebugPrintSoertedCharacterVerb()
     {
-        foreach(var character in sortedCharacter)
+        foreach (var character in sortedCharacter)
         {
             UnityEngine.Debug.Log("verb: " + character.VerbTracker.PeekVerb().def.defName);
         }
@@ -141,7 +141,7 @@ public class StageManager : GameComponent
     {
         foreach (var character in characters)
         {
-            foreach(var verb in verbs[character])
+            foreach (var verb in verbs[character])
             {
                 character.VerbTracker.AddVerb(verb);
             }
