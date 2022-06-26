@@ -27,7 +27,7 @@ public class PeekCardScript : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                this.peek = (Verb_Peek)VerbDefOf.movementBasic.CreateVerb();
+                this.peek = (Verb_Peek)VerbDefOf.peek.CreateVerb();
                 this.peek.TrySetTarget(new TargetInfo { location = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z) });
                 TaskOnReadyClick();
             }
