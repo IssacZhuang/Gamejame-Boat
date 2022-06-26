@@ -22,19 +22,34 @@ public class InteractionManager : MonoBehaviour
     public SlotScript slot2;
     public Transform CardUIParentTransform;
     private List<CardScript> cardList;
+    private List<Verb> verbList;
+    private Character currentCharacter;
+    private bool isPrepare;
 
     public void StartTest()
     {
         //inputManager.GuiPrepareStartCallBack();
-        Debug.Log("start test");
+        //Debug.Log("start test");
+        isPrepare = true;
         inputManager.GuiPrepareStartCallBack();
+        PreparationSwitchCharacter();
+
+        //slot1.isFilled = true;
+        //slot1.slotIcon.sprite = fireballIcon;
+    }
+
+
+    private bool PreparationSwitchCharacter()
+    {
         Character character = inputManager.GuiPrepareGetCharacterCallBack();
         //Debug.Log(character == null);
         if (character != null)
         {
             Debug.Log("character found");
+            currentCharacter = character;
             List<VerbDef> verbInHand = character.VerbInhand;
             cardList = new List<CardScript>();
+            verbList = new List<Verb>();
             int counter = 0;
             Debug.Log(verbInHand.Count);
             foreach (VerbDef verbDef in verbInHand)
@@ -42,76 +57,172 @@ public class InteractionManager : MonoBehaviour
                 if (fireballCard == null)
                 {
                     UnityEngine.Debug.LogError("No fireballCard prefab set");
-                    return;
+                    return false;
                 }
                 if (splitFireballCard == null)
                 {
                     UnityEngine.Debug.LogError("No splitFireballCard prefab set");
-                    return;
+                    return false;
                 }
 
                 if (meteoroliteCard == null)
                 {
                     UnityEngine.Debug.LogError("No meteoroliteCard prefab set");
-                    return;
+                    return false;
                 }
 
                 if (defendCard == null)
                 {
                     UnityEngine.Debug.LogError("No fireballCard prefab set");
-                    return;
+                    return false;
                 }
 
                 if (movementCard == null)
                 {
                     UnityEngine.Debug.LogError("No movementCard prefab set");
-                    return;
+                    return false;
                 }
 
                 if (peekCard == null)
                 {
                     UnityEngine.Debug.LogError("No peekCard prefab set");
-                    return;
+                    return false;
                 }
 
                 GameObject cardObj = null;
-                if (verbDef.workerClass == typeof(Verb_ShootFireBall))
+                if (verbDef == VerbDefOf.attackFireball)
                 {
                     cardObj = GameObject.Instantiate(fireballCard);
                 }
-                if (verbDef.workerClass == typeof(Verb_ShootSplitFireBall))
+                if (verbDef == VerbDefOf.attackSplitFireball)
                 {
                     cardObj = GameObject.Instantiate(splitFireballCard);
                 }
-                if (verbDef.workerClass == typeof(Verb_ShootMeteorite))
+                if (verbDef == VerbDefOf.attackMeteorolite)
                 {
                     cardObj = GameObject.Instantiate(meteoroliteCard);
                 }
-                if (verbDef.workerClass == typeof(Verb_Defend))
+                if (verbDef == VerbDefOf.defendBasic)
                 {
                     cardObj = GameObject.Instantiate(defendCard);
                 }
-                if (verbDef.workerClass == typeof(Verb_Move))
+                if (verbDef == VerbDefOf.movementBasic)
                 {
                     cardObj = GameObject.Instantiate(movementCard);
                 }
-                if (verbDef.workerClass == typeof(Verb_Peek))
+                if (verbDef == VerbDefOf.peek)
                 {
                     cardObj = GameObject.Instantiate(peekCard);
                 }
                 if (cardObj != null)
                 {
                     CardScript card = cardObj.GetComponent<CardScript>();
-                    card.InitializeCard(verbDef,character);
+                    card.InitializeCard(verbDef, character);
                     card.transform.parent = CardUIParentTransform.transform;
                     card.transform.position = cardPosition[counter++].position;
                     cardList.Add(card);
                 }
 
             }
+            return true;
         }
-        slot1.isFilled = true;
-        slot1.slotIcon.sprite = fireballIcon;
+        else
+        {
+            return false;
+        }
+    }
+
+    private bool PeekSwitchCharacter()
+    {
+        Character character = inputManager.GuiPeekCallBack();
+        //Debug.Log(character == null);
+        if (character != null)
+        {
+            Debug.Log("character found");
+            currentCharacter = character;
+            List<VerbDef> verbInHand = character.VerbInhand;
+            cardList = new List<CardScript>();
+            verbList = new List<Verb>();
+            int counter = 0;
+            Debug.Log(verbInHand.Count);
+            foreach (VerbDef verbDef in verbInHand)
+            {
+                if (fireballCard == null)
+                {
+                    UnityEngine.Debug.LogError("No fireballCard prefab set");
+                    return false;
+                }
+                if (splitFireballCard == null)
+                {
+                    UnityEngine.Debug.LogError("No splitFireballCard prefab set");
+                    return false;
+                }
+
+                if (meteoroliteCard == null)
+                {
+                    UnityEngine.Debug.LogError("No meteoroliteCard prefab set");
+                    return false;
+                }
+
+                if (defendCard == null)
+                {
+                    UnityEngine.Debug.LogError("No fireballCard prefab set");
+                    return false;
+                }
+
+                if (movementCard == null)
+                {
+                    UnityEngine.Debug.LogError("No movementCard prefab set");
+                    return false;
+                }
+
+                if (peekCard == null)
+                {
+                    UnityEngine.Debug.LogError("No peekCard prefab set");
+                    return false;
+                }
+
+                GameObject cardObj = null;
+                if (verbDef == VerbDefOf.attackFireball)
+                {
+                    cardObj = GameObject.Instantiate(fireballCard);
+                }
+                if (verbDef == VerbDefOf.attackSplitFireball)
+                {
+                    cardObj = GameObject.Instantiate(splitFireballCard);
+                }
+                if (verbDef == VerbDefOf.attackMeteorolite)
+                {
+                    cardObj = GameObject.Instantiate(meteoroliteCard);
+                }
+                if (verbDef == VerbDefOf.defendBasic)
+                {
+                    cardObj = GameObject.Instantiate(defendCard);
+                }
+                if (verbDef == VerbDefOf.movementBasic)
+                {
+                    cardObj = GameObject.Instantiate(movementCard);
+                }
+                if (verbDef == VerbDefOf.peek)
+                {
+                    cardObj = GameObject.Instantiate(peekCard);
+                }
+                if (cardObj != null)
+                {
+                    CardScript card = cardObj.GetComponent<CardScript>();
+                    card.InitializeCard(verbDef, character);
+                    card.transform.parent = CardUIParentTransform.transform;
+                    card.transform.position = cardPosition[counter++].position;
+                    cardList.Add(card);
+                }
+
+            }
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     public bool IfSlotsAllFilled()
@@ -123,39 +234,116 @@ public class InteractionManager : MonoBehaviour
     {
         if (!IfSlotsAllFilled())
         {
-
+            if (!slot1.isFilled)
+            {
+                verbList[0] = verb;
+                if (verb.def == VerbDefOf.attackFireball)
+                {
+                    slot1.SetIcon(fireballIcon);
+                }
+                if (verb.def == VerbDefOf.attackSplitFireball)
+                {
+                    slot1.SetIcon(splitFireballIcon);
+                }
+                if (verb.def == VerbDefOf.attackMeteorolite)
+                {
+                    slot1.SetIcon(meteoroliteIcon);
+                }
+                if (verb.def == VerbDefOf.defendBasic)
+                {
+                    slot1.SetIcon(defendIcon);
+                }
+                if (verb.def == VerbDefOf.movementBasic)
+                {
+                    slot1.SetIcon(movementIcon);
+                }
+                if (verb.def == VerbDefOf.peek)
+                {
+                    slot1.SetIcon(peekIcon);
+                }
+            }
+            else if (!slot2.isFilled)
+            {
+                verbList[0] = verb;
+                if (verb.def == VerbDefOf.attackFireball)
+                {
+                    slot2.SetIcon(fireballIcon);
+                }
+                if (verb.def == VerbDefOf.attackSplitFireball)
+                {
+                    slot2.SetIcon(splitFireballIcon);
+                }
+                if (verb.def == VerbDefOf.attackMeteorolite)
+                {
+                    slot2.SetIcon(meteoroliteIcon);
+                }
+                if (verb.def == VerbDefOf.defendBasic)
+                {
+                    slot2.SetIcon(defendIcon);
+                }
+                if (verb.def == VerbDefOf.movementBasic)
+                {
+                    slot2.SetIcon(movementIcon);
+                }
+                if (verb.def == VerbDefOf.peek)
+                {
+                    slot2.SetIcon(peekIcon);
+                }
+            }
         }
     }
     public void Slot1Clicked()
     {
         //Debug.Log("Slot1 clicked");
-        if (slot1.isFilled)
+        if (slot1.isFilled && !isPrepare && !slot1.isPeek)
         {
-            slot1.slotIcon.sprite = null;
-            slot1.isFilled = false;
+            slot1.RemoveIcon();
         }
     }
 
 
     public void Slot2Clicked()
     {
-        if (slot2.isFilled)
+        if (slot2.isFilled && !isPrepare && !slot2.isPeek)
         {
-            slot2.slotIcon.sprite = null;
-            slot2.isFilled = false;
+            slot2.RemoveIcon();
         }
     }
 
+    public void CharacterPreparationFinished()
+    {
+        if (IfSlotsAllFilled())
+        {
+            inputManager.GuiPrepareSelectCallBack(currentCharacter, verbList);
+        }
+        else
+        {
+            foreach(Verb verb in verbList)
+            {
+                if (verb.def == VerbDefOf.peek)
+                {
+                    inputManager.GuiPrepareSelectCallBack(currentCharacter, verbList);
+                }
+            }
+        }
+        if (!PreparationSwitchCharacter())
+        {
+            inputManager.GuiPrepareEndCallBack();
+            inputManager.GuiPeekStartCallBack();
+            inputManager.GuiPeekCallBack();
+        }
+    }
+
+    public void CharacterPeekFinished()
+    {
+
+    }
 
     public void GenerateCard()
     {
 
     }
 
-    public void SwitchCharacter()
-    {
-
-    }
 
     public void SelectCard()
     {

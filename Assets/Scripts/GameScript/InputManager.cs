@@ -15,6 +15,7 @@ public class InputManager : GameComponent
     private Dictionary<Character, List<Verb>> charactersPrepareVerb = new Dictionary<Character, List<Verb>>();
     private Dictionary<Character, List<Verb>> charactersPeekVerb = new Dictionary<Character, List<Verb>>();
     private Dictionary<Character, List<Verb>> charactersInvokeVerb = new Dictionary<Character, List<Verb>>();
+    public int characterCount;
 
     public void Start()
     {
@@ -49,6 +50,7 @@ public class InputManager : GameComponent
         indexCounter = 0;
         // get all charactors
         characters = stageManager.Characters;
+        characterCount = characters.Count;
         // reset Dictionary
         charactersCanPeek = new List<Character>();
         charactersPrepareVerb = new Dictionary<Character, List<Verb>>();
