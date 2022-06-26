@@ -52,6 +52,7 @@ public class InteractionManager : GameComponent
     public void intStatus()
     {
         //isPrepare = true;
+        inputManager.GuiPrepareStartCallBack();
         isPrepareStage = true;
         isPrepareDone = true;
         isPeekStage = false;
@@ -66,7 +67,6 @@ public class InteractionManager : GameComponent
         // ?????????isPrepareDone???true
         if (isPrepareStage && isPrepareDone && isGameStart)
         {
-            inputManager.GuiPrepareStartCallBack();
             // ??????, ????????gui?
             hasNextPrepare = PreparationSwitchCharacter();
             // ?????, ??isPrepareDone?false??????
