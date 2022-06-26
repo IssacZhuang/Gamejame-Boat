@@ -61,10 +61,11 @@ public class InteractionManager : GameComponent
 
     public void Update()
     {
+        bool isGameStart = inputManager.GuiCheckGameStartCallBack();
         // ??????? (isPrepareStage=true)
         // ???isPrepareDone????true
         // ?????????isPrepareDone???true
-        if (isPrepareStage && isPrepareDone)
+        if (isPrepareStage && isPrepareDone && isGameStart)
         {
             // ??????, ????????gui?
             hasNextPrepare = PreparationSwitchCharacter();
@@ -73,6 +74,7 @@ public class InteractionManager : GameComponent
             {
                 isPrepareDone = false;
                 // ?????ready???????????, ??isPrepareDone?true
+                readyButton.GetComponent<Button>().onClick.RemoveAllListeners();
                 readyButton.GetComponent<Button>().onClick.AddListener(PreparationFinishedCallBack);
             }
         }
@@ -94,6 +96,7 @@ public class InteractionManager : GameComponent
             {
                 isPeekDone = false;
                 // ?????ready???????????, ??isPrepareDone?true
+                readyButton.GetComponent<Button>().onClick.RemoveAllListeners();
                 readyButton.GetComponent<Button>().onClick.AddListener(PeekFinishedCallBack);
             }
         }
@@ -118,10 +121,11 @@ public class InteractionManager : GameComponent
     {
         if (cardList != null)
         {
-            while (cardList.Count > 0)
+            foreach (var card in cardList)
             {
-                cardList[0].Destroy();
+                card.Destroy();
             }
+            cardList = new List<CardScript>();
         }
         if (slot1.isFilled) slot1.RemoveIcon();
         if (slot2.isFilled) slot2.RemoveIcon();

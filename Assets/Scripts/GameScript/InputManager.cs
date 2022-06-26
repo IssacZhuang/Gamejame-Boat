@@ -17,7 +17,7 @@ public class InputManager : GameComponent
     private Dictionary<Character, List<Verb>> charactersInvokeVerb = new Dictionary<Character, List<Verb>>();
     public int characterCount;
 
-    public void Start()
+    private void Start()
     {
         stageManager = GetComponent<StageManager>();
     }
@@ -44,6 +44,13 @@ public class InputManager : GameComponent
 
     //}
 
+    //--------------PrepareStage--------------
+    public bool GuiCheckGameStartCallBack()
+    {
+        bool isGameStart = (characters.Count > 0);
+        return isGameStart;
+    }
+
     // --------------PrepareStage--------------
     public void GuiPrepareStartCallBack()
     {
@@ -60,7 +67,7 @@ public class InputManager : GameComponent
 
     public Character GuiPrepareGetCharacterCallBack()
     {
-        Debug.Log(characters.Count);
+        //Debug.Log(characters.Count);
         //return character or null
         if (characters.Count > indexCounter)
         {
