@@ -315,7 +315,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: acd9ad2460dc2f04bae3e42bc5fd4bf6, type: 2}
+  - {fileID: 2100000, guid: d1fcdc26b6b03b24197fb8287e595925, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -356,7 +356,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4998873966815592163
 RectTransform:
   m_ObjectHideFlags: 0
@@ -484,8 +484,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFilled: 0
-  slotIcon: {fileID: 0}
   isPeek: 0
+  slotIcon: {fileID: 0}
+  fireballIcon: {fileID: 0}
+  splitFireballIcon: {fileID: 0}
+  meteoroliteIcon: {fileID: 0}
+  defendIcon: {fileID: 0}
+  movementIcon: {fileID: 0}
+  peekIcon: {fileID: 0}
 --- !u!1 &6080185557298325244
 GameObject:
   m_ObjectHideFlags: 0
@@ -581,7 +587,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1809773596784727596
 RectTransform:
   m_ObjectHideFlags: 0
@@ -709,8 +715,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFilled: 0
-  slotIcon: {fileID: 0}
   isPeek: 0
+  slotIcon: {fileID: 0}
+  fireballIcon: {fileID: 0}
+  splitFireballIcon: {fileID: 0}
+  meteoroliteIcon: {fileID: 0}
+  defendIcon: {fileID: 0}
+  movementIcon: {fileID: 0}
+  peekIcon: {fileID: 0}
 --- !u!1 &7778558989048718837
 GameObject:
   m_ObjectHideFlags: 0
