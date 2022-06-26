@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 using Scaffold;
 public class InputManager : GameComponent
@@ -120,6 +121,11 @@ public class InputManager : GameComponent
     }
 
     // --------------get information--------------
+    public bool VerbQueueClearCallBack()
+    {
+        bool clear = !characters.Any(x => x.VerbTracker.HasQueuedVerb);
+        return clear;
+    }
     public List<Verb> GuiGetPrepareDictCallBack(Character character)
     {
         return charactersPeekVerb[character];

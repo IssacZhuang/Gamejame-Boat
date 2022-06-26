@@ -47,22 +47,23 @@ public class InteractionManager : GameComponent
         //intStatus();
         //slot1.isFilled = true;
         //slot1.slotIcon.sprite = fireballIcon;
+        this.isPrepareStage = true;
+        this.isPrepareDone = true;
+        this.isPeekStage = false;
+        this.isPeekDone = false;
+        this.hasNextPrepare = true;
     }
 
     public void intStatus()
     {
         //isPrepare = true;
         inputManager.GuiPrepareStartCallBack();
-        isPrepareStage = true;
-        isPrepareDone = true;
-        isPeekStage = false;
-        isPeekDone = true;
-        hasNextPrepare = true;
     }
 
     public void Update()
     {
         bool isGameStart = inputManager.GuiCheckGameStartCallBack();
+
         // ??????? (isPrepareStage=true)
         // ???isPrepareDone????true
         // ?????????isPrepareDone???true
@@ -110,10 +111,17 @@ public class InteractionManager : GameComponent
             inputManager.GuiPeekEndCallBack();
         }
 
+        bool verbClear = inputManager.VerbQueueClearCallBack();
+
         // ???????, ????????
-        if(!isPrepareStage && !isPeekStage)
+        if (!isPrepareStage && !isPeekStage && verbClear)
         {
             intStatus();
+            this.isPrepareStage = true;
+            this.isPrepareDone = true;
+            this.isPeekStage = false;
+            this.isPeekDone = false;
+            this.hasNextPrepare = true;
         }
 
     }
