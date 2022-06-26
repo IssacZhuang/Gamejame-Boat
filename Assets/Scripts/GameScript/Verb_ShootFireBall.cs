@@ -21,10 +21,6 @@ public class Verb_ShootFireBall : Verb
         Projectile thing = projectile.GetComponent<Projectile>();
         // Something <Projectile_FireBall> defined need to fill
         // for direction
-        thing.ActionVerbEnd = () =>
-        {
-            this.OnVerbEnd();
-        };
         Vector3 from = this.parent.transform.position;
         thing.direction = new Vector3(Target.location.x - from.x, 0, Target.location.z - from.z);
         thing.transform.position = from + thing.direction.normalized*3f;

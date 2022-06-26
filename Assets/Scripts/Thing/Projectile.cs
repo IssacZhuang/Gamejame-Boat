@@ -29,7 +29,11 @@ public class Projectile : Thing
         //越界判断
         if (Find.CurrentGame.GlobalTick - startTime > 50 * 5) //at most last 5s
         {
-            if (ActionVerbEnd != null) ActionVerbEnd();
+
+            {
+                ActionVerbEnd();
+                Debug.Log("end");
+            }
             Destroy();
         }
     }
@@ -46,12 +50,16 @@ public class Projectile : Thing
         {
             HitCharacter(character);
         }
+        if (ActionVerbEnd != null)
+        {
+            ActionVerbEnd();
+            Debug.Log("end");
+        }
         Destroy();
     }
 
     public virtual void HitCharacter(Character character)
     {
-        if (ActionVerbEnd != null) ActionVerbEnd();
         character.BuffTracker.TryAddBuff(BuffDefOf.attack);
         // define a repel buff
         Buff_Repel repelBuff = (Buff_Repel)BuffDefOf.repelDebuff.CreateBuff();
@@ -59,8 +67,4 @@ public class Projectile : Thing
         character.BuffTracker.TryAddBuff(repelBuff);
     }
 
-    public void OnDestroy()
-    {
-        if (ActionVerbEnd != null) ActionVerbEnd();
-    }
 }
