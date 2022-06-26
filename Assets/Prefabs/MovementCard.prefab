@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5496046775920542689}
   - component: {fileID: 92030362255278732}
   - component: {fileID: -955678907751327000}
+  - component: {fileID: 763292769052177031}
   m_Layer: 5
   m_Name: MovementCard
   m_TagString: Untagged
@@ -90,6 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 499e007008191864fb447082fe795dfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  owner: {fileID: 0}
 --- !u!114 &-955678907751327000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,3 +136,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &763292769052177031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8144406352387945111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 187200a2d77c20a4c9ec7b9d0ff810ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  yourButton: {fileID: -955678907751327000}
+  fireBall: {fileID: 0}
+  interactionManager: {fileID: 0}

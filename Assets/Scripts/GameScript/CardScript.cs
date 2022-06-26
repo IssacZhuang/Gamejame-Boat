@@ -22,8 +22,8 @@ public class CardScript : Thing
 
     }
 
-    public void Onclick()
-    {
+    //public void Onclick()
+    //{
 
-    }
+    //}
 }

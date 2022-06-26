@@ -5,7 +5,7 @@ using UnityEngine;
 public class VerbTracker 
 {
     private Verb currentVerb;
-    private Queue<Verb> pendingVerbs = new Queue<Verb>();
+    public Queue<Verb> pendingVerbs = new Queue<Verb>();
     private Character parent;
 
     public bool IsCurrentVerbFinished => currentVerb != null && currentVerb.parent == null;
