@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CardScript : MonoBehaviour
+using Scaffold;
+public class CardScript : Thing
 {
     public VerbDef verbDef;
     public Character owner;

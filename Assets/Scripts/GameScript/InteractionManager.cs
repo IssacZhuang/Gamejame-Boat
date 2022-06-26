@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InteractionManager : MonoBehaviour
+using Scaffold;
+public class InteractionManager : GameComponent
 {
     public Transform[] cardPosition;
     public InputManager inputManager;
@@ -41,6 +42,18 @@ public class InteractionManager : MonoBehaviour
 
     private bool PreparationSwitchCharacter()
     {
+        while (cardList.Count > 0)
+        {
+            cardList[0].Destroy();
+        }
+        if (slot1.isFilled)
+        {
+            slot1.RemoveIcon();
+        }
+        if (slot2.isFilled)
+        {
+            slot2.RemoveIcon();
+        }
         Character character = inputManager.GuiPrepareGetCharacterCallBack();
         //Debug.Log(character == null);
         if (character != null)
@@ -134,6 +147,18 @@ public class InteractionManager : MonoBehaviour
 
     private bool PeekSwitchCharacter()
     {
+        while (cardList.Count > 0)
+        {
+            cardList[0].Destroy();
+        }
+        if (slot1.isFilled)
+        {
+            slot1.RemoveIcon();
+        }
+        if (slot2.isFilled)
+        {
+            slot2.RemoveIcon();
+        }
         Character character = inputManager.GuiPeekCallBack();
         //Debug.Log(character == null);
         if (character != null)
@@ -142,7 +167,7 @@ public class InteractionManager : MonoBehaviour
             currentCharacter = character;
             List<VerbDef> verbInHand = character.VerbInhand;
             cardList = new List<CardScript>();
-            verbList = new List<Verb>();
+            verbList = inputManager.GuiGetPrepareDictCallBack(currentCharacter);
             int counter = 0;
             Debug.Log(verbInHand.Count);
             foreach (VerbDef verbDef in verbInHand)
@@ -217,6 +242,7 @@ public class InteractionManager : MonoBehaviour
                 }
 
             }
+
             return true;
         }
         else
@@ -312,37 +338,60 @@ public class InteractionManager : MonoBehaviour
 
     public void CharacterPreparationFinished()
     {
-        if (IfSlotsAllFilled())
+        if (isPrepare)
         {
-            inputManager.GuiPrepareSelectCallBack(currentCharacter, verbList);
+            if (IfSlotsAllFilled())
+            {
+                inputManager.GuiPrepareSelectCallBack(currentCharacter, verbList);
+            }
+            else
+            {
+                foreach(Verb verb in verbList)
+                {
+                    if (verb.def == VerbDefOf.peek)
+                    {
+                        inputManager.GuiPrepareSelectCallBack(currentCharacter, verbList);
+                        break;
+                    }
+                }
+                Debug.Log("You are not finished");
+                return;
+
+            }
+            if (!PreparationSwitchCharacter())
+            {
+                currentCharacter = null;
+                cardList = null;
+                verbList = null;
+                inputManager.GuiPrepareEndCallBack();
+                isPrepare = false;
+                inputManager.GuiPeekStartCallBack();
+                inputManager.GuiPeekCallBack();
+            }
         }
         else
         {
-            foreach(Verb verb in verbList)
+            if (IfSlotsAllFilled())
             {
-                if (verb.def == VerbDefOf.peek)
-                {
-                    inputManager.GuiPrepareSelectCallBack(currentCharacter, verbList);
-                }
+                inputManager.GuiPrepareSelectCallBack(currentCharacter, verbList);
+            }
+            else
+            {
+                return;
             }
         }
-        if (!PreparationSwitchCharacter())
-        {
-            inputManager.GuiPrepareEndCallBack();
-            inputManager.GuiPeekStartCallBack();
-            inputManager.GuiPeekCallBack();
-        }
-    }
-
-    public void CharacterPeekFinished()
-    {
 
     }
 
-    public void GenerateCard()
-    {
+    //public void CharacterPeekFinished()
+    //{
 
-    }
+    //}
+
+    //public void GenerateCard()
+    //{
+
+    //}
 
 
     public void SelectCard()

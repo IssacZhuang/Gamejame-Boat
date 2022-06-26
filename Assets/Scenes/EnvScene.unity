@@ -609,6 +609,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFilled: 0
   slotIcon: {fileID: 0}
+  isPeek: 0
 --- !u!1 &103405025
 GameObject:
   m_ObjectHideFlags: 0
@@ -2046,6 +2047,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFilled: 0
   slotIcon: {fileID: 0}
+  isPeek: 0
 --- !u!1 &407883004
 GameObject:
   m_ObjectHideFlags: 0
@@ -2715,7 +2717,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8809338316589389811, guid: 8423b411fe63b754b94f20eec8f5e3fc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8809338316589389811, guid: 8423b411fe63b754b94f20eec8f5e3fc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -3087,6 +3089,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52da3c41f93dbbf4eb8d8b190a5ebbf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterCount: 0
 --- !u!114 &656058258
 MonoBehaviour:
   m_ObjectHideFlags: 0

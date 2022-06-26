@@ -113,9 +113,9 @@ public class InputManager : GameComponent
     }
 
     // --------------get information--------------
-    public Dictionary<Character, List<Verb>> GuiGetPrepareDictCallBack()
+    public List<Verb> GuiGetPrepareDictCallBack(Character character)
     {
-        return charactersPrepareVerb;
+        return charactersPeekVerb[character];
     }
 
     // Utility functions
