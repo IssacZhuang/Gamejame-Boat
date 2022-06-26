@@ -32,7 +32,7 @@ public class InteractionManager : GameComponent
     {
         //inputManager.GuiPrepareStartCallBack();
         //Debug.Log("start test");
-        isPrepare = true;
+        isPrepare = false;
         inputManager.GuiPrepareStartCallBack();
         PreparationSwitchCharacter();
 

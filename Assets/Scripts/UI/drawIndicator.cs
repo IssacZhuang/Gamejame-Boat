@@ -14,7 +14,7 @@ public class drawIndicator : MonoBehaviour
     public void Update()
     {
         //player = GameObject.Find("Player1(Clone)");
-        if (player != null)
+        if (player != null && Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;

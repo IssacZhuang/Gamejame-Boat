@@ -160,6 +160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76691a1c225369b438f480943bf2e57c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  yourButton: {fileID: 8809338316589389811}
+  cardButton: {fileID: 8809338316589389811}
+  selectedButton: {fileID: 8809338316589389811}
   fireBall: {fileID: 8155670831498623064, guid: 1b147fbf4377b144a89fd846c81129c4, type: 3}
-  game: {fileID: 5645657753800956192, guid: 3de07aaa79ff75f4f84421706de41dce, type: 3}
+  interactionManager: {fileID: 0}
