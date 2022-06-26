@@ -65,84 +65,58 @@ public class InteractionManager : MonoBehaviour
                     UnityEngine.Debug.LogError("No peekCard prefab set");
                     return;
                 }
-                //Debug.Log("test");
-                //GameObject cardObj = GameObject.Instantiate(fireballCard);
-                //CardScript card = cardObj.GetComponent<CardScript>();
-                //card.InitializeCard(verbDef);
-                //card.transform.parent = CardUIParentTransform.transform;
-                //card.transform.position = cardPosition[counter++].position;
 
-                //CardScript card = cardObj.GetComponent<CardScript>();
-                //card.InitializeCard(verbDef);
-                ////card.transform.position = cardPosition[counter++].position;
-                //cardList.Add(card);
-
+                GameObject cardObj = null;
                 if (verbDef.workerClass == typeof(Verb_ShootFireBall))
                 {
-                    GameObject cardObj = GameObject.Instantiate(fireballCard);
-                    CardScript card = cardObj.GetComponent<CardScript>();
-                    card.InitializeCard(verbDef);
-                    card.transform.parent = CardUIParentTransform.transform;
-                    card.transform.position = cardPosition[counter++].position;
-                    cardList.Add(card);
+                    cardObj = GameObject.Instantiate(fireballCard);
                 }
                 if (verbDef.workerClass == typeof(Verb_ShootSplitFireBall))
                 {
-                    GameObject cardObj = GameObject.Instantiate(splitFireballCard);
-                    CardScript card = cardObj.GetComponent<CardScript>();
-                    card.InitializeCard(verbDef);
-                    card.transform.parent = CardUIParentTransform.transform;
-                    card.transform.position = cardPosition[counter++].position;
-                    cardList.Add(card);
+                    cardObj = GameObject.Instantiate(splitFireballCard);
                 }
                 if (verbDef.workerClass == typeof(Verb_ShootMeteorite))
                 {
-                    GameObject cardObj = GameObject.Instantiate(meteoroliteCard);
-                    CardScript card = cardObj.GetComponent<CardScript>();
-                    card.InitializeCard(verbDef);
-                    card.transform.parent = CardUIParentTransform.transform;
-                    card.transform.position = cardPosition[counter++].position;
-                    cardList.Add(card);
+                    cardObj = GameObject.Instantiate(meteoroliteCard);
                 }
                 if (verbDef.workerClass == typeof(Verb_Defend))
                 {
-                    GameObject cardObj = GameObject.Instantiate(defendCard);
-                    CardScript card = cardObj.GetComponent<CardScript>();
-                    card.InitializeCard(verbDef);
-                    card.transform.parent = CardUIParentTransform.transform;
-                    card.transform.position = cardPosition[counter++].position;
-                    cardList.Add(card);
+                    cardObj = GameObject.Instantiate(defendCard);
                 }
                 if (verbDef.workerClass == typeof(Verb_Move))
                 {
-                    GameObject cardObj = GameObject.Instantiate(movementCard);
-                    CardScript card = cardObj.GetComponent<CardScript>();
-                    card.InitializeCard(verbDef);
-                    card.transform.parent = CardUIParentTransform.transform;
-                    card.transform.position = cardPosition[counter++].position;
-                    cardList.Add(card);
+                    cardObj = GameObject.Instantiate(movementCard);
                 }
                 if (verbDef.workerClass == typeof(Verb_Peek))
                 {
-                    GameObject cardObj = GameObject.Instantiate(peekCard);
+                    cardObj = GameObject.Instantiate(peekCard);
+                }
+                if (cardObj != null)
+                {
                     CardScript card = cardObj.GetComponent<CardScript>();
-                    card.InitializeCard(verbDef);
+                    card.InitializeCard(verbDef,character);
                     card.transform.parent = CardUIParentTransform.transform;
                     card.transform.position = cardPosition[counter++].position;
                     cardList.Add(card);
                 }
 
-
-                //GameObject cardObj = GameObject.Instantiate(cardPrefab);
-                //CardScript card = cardObj.GetComponent<CardScript>();
-                //card.InitializeCard(verbDef);
-                //card.transform.position = cardPosition[counter++].position;
-                //cardList.Add(card);
-
-                //GameObject cardObj = GameObject.Instantiate(playerPrefab);
-                //cardObj.transform.position = cardPosition[0].position;
             }
         }
+    }
+
+
+    public void Slot1Clicked()
+    {
+        //foreach (CardScript card in cardList)
+        //{
+        //    card.GetComponent<Button>.Onclick.
+        //}
+    }
+
+
+    public void Slot2Clicked()
+    {
+
     }
     public void GenerateCard()
     {

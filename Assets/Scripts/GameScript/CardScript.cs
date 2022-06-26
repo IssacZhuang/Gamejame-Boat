@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class CardScript : MonoBehaviour
 {
     public VerbDef verbDef;
+    public Character owner;
 
     public CardScript()
     {
@@ -13,9 +14,10 @@ public class CardScript : MonoBehaviour
     }
 
 
-    public void InitializeCard(VerbDef verbDef)
+    public void InitializeCard(VerbDef verbDef,Character owner)
     {
         this.verbDef = verbDef;
+        this.owner = owner;
 
     }
 
