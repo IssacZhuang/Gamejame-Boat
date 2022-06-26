@@ -57,6 +57,7 @@ public class InteractionManager : GameComponent
         isPrepareDone = true;
         isPeekStage = false;
         isPeekDone = true;
+        hasNextPrepare = true;
     }
 
     public void Update()
