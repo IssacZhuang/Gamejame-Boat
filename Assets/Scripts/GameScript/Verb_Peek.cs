@@ -6,9 +6,9 @@ public class Verb_Peek : MonoBehaviour
 {
     public Character targetCharacter;
 
-    public void AssignTarget(Character c)
+    public void AssignTarget(GameObject c)
     {
-        targetCharacter = c;
+        targetCharacter = c.GetComponent<Character>();
     }
 
 }
