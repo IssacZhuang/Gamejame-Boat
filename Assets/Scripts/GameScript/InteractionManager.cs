@@ -43,10 +43,14 @@ public class InteractionManager : GameComponent
 
     private bool PreparationSwitchCharacter()
     {
-        while (cardList.Count > 0)
+        if (cardList != null)
         {
-            cardList[0].Destroy();
+            while (cardList.Count > 0)
+            {
+                cardList[0].Destroy();
+            }
         }
+
         if (slot1.isFilled)
         {
             slot1.RemoveIcon();
@@ -63,7 +67,7 @@ public class InteractionManager : GameComponent
             currentCharacter = character;
             List<VerbDef> verbInHand = character.VerbInhand;
             cardList = new List<CardScript>();
-            verbList = new List<Verb>();
+            verbList = new List<Verb>(new Verb[inputManager.characterCount]);
             int counter = 0;
             Debug.Log(verbInHand.Count);
             foreach (VerbDef verbDef in verbInHand)
@@ -148,9 +152,12 @@ public class InteractionManager : GameComponent
 
     private bool PeekSwitchCharacter()
     {
-        while (cardList.Count > 0)
+        if (cardList != null)
         {
-            cardList[0].Destroy();
+            while (cardList.Count > 0)
+            {
+                cardList[0].Destroy();
+            }
         }
         if (slot1.isFilled)
         {
@@ -259,65 +266,70 @@ public class InteractionManager : GameComponent
 
     public void FillSlot(Verb verb)
     {
-        if (!IfSlotsAllFilled())
+        if (verb != null)
         {
-            if (!slot1.isFilled)
+            if (!IfSlotsAllFilled())
             {
-                verbList[0] = verb;
-                if (verb.def == VerbDefOf.attackFireball)
+                if (!slot1.isFilled)
                 {
-                    slot1.SetIcon(fireballIcon);
+                    verbList[0] = verb;
+                    Debug.Log(verb.def);
+                    if (verb.def == VerbDefOf.attackFireball)
+                    {
+                        slot1.SetIcon(fireballIcon);
+                    }
+                    if (verb.def == VerbDefOf.attackSplitFireball)
+                    {
+                        slot1.SetIcon(splitFireballIcon);
+                    }
+                    if (verb.def == VerbDefOf.attackMeteorolite)
+                    {
+                        slot1.SetIcon(meteoroliteIcon);
+                    }
+                    if (verb.def == VerbDefOf.defendBasic)
+                    {
+                        slot1.SetIcon(defendIcon);
+                    }
+                    if (verb.def == VerbDefOf.movementBasic)
+                    {
+                        slot1.SetIcon(movementIcon);
+                    }
+                    if (verb.def == VerbDefOf.peek)
+                    {
+                        slot1.SetIcon(peekIcon);
+                    }
                 }
-                if (verb.def == VerbDefOf.attackSplitFireball)
+                else if (!slot2.isFilled)
                 {
-                    slot1.SetIcon(splitFireballIcon);
-                }
-                if (verb.def == VerbDefOf.attackMeteorolite)
-                {
-                    slot1.SetIcon(meteoroliteIcon);
-                }
-                if (verb.def == VerbDefOf.defendBasic)
-                {
-                    slot1.SetIcon(defendIcon);
-                }
-                if (verb.def == VerbDefOf.movementBasic)
-                {
-                    slot1.SetIcon(movementIcon);
-                }
-                if (verb.def == VerbDefOf.peek)
-                {
-                    slot1.SetIcon(peekIcon);
-                }
-            }
-            else if (!slot2.isFilled)
-            {
-                verbList[0] = verb;
-                if (verb.def == VerbDefOf.attackFireball)
-                {
-                    slot2.SetIcon(fireballIcon);
-                }
-                if (verb.def == VerbDefOf.attackSplitFireball)
-                {
-                    slot2.SetIcon(splitFireballIcon);
-                }
-                if (verb.def == VerbDefOf.attackMeteorolite)
-                {
-                    slot2.SetIcon(meteoroliteIcon);
-                }
-                if (verb.def == VerbDefOf.defendBasic)
-                {
-                    slot2.SetIcon(defendIcon);
-                }
-                if (verb.def == VerbDefOf.movementBasic)
-                {
-                    slot2.SetIcon(movementIcon);
-                }
-                if (verb.def == VerbDefOf.peek)
-                {
-                    slot2.SetIcon(peekIcon);
+                    verbList[0] = verb;
+                    if (verb.def == VerbDefOf.attackFireball)
+                    {
+                        slot2.SetIcon(fireballIcon);
+                    }
+                    if (verb.def == VerbDefOf.attackSplitFireball)
+                    {
+                        slot2.SetIcon(splitFireballIcon);
+                    }
+                    if (verb.def == VerbDefOf.attackMeteorolite)
+                    {
+                        slot2.SetIcon(meteoroliteIcon);
+                    }
+                    if (verb.def == VerbDefOf.defendBasic)
+                    {
+                        slot2.SetIcon(defendIcon);
+                    }
+                    if (verb.def == VerbDefOf.movementBasic)
+                    {
+                        slot2.SetIcon(movementIcon);
+                    }
+                    if (verb.def == VerbDefOf.peek)
+                    {
+                        slot2.SetIcon(peekIcon);
+                    }
                 }
             }
         }
+        
     }
     public void Slot1Clicked()
     {
