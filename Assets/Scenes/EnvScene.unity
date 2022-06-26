@@ -499,7 +499,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -72.5, y: 9.1}
+  m_AnchoredPosition: {x: -72.5, y: 9.100006}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &99464889
@@ -608,8 +608,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58b96f82ba26e6041947a67d6b83b3d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isFilled: 0
-  slotIcon: {fileID: 0}
+  isFilled: 1
+  slotIcon: {fileID: 99464889}
   isPeek: 0
 --- !u!1 &103405025
 GameObject:
@@ -1846,7 +1846,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 46acb0723ecd0bf4a8335d943e5c186a, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.657
+  m_Volume: 0.843
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -3414,7 +3414,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 082b07c5711474d4da0363e8932d272f, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.657
+  m_Volume: 0.843
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -4570,7 +4570,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 91b8a2b4fffa06847b0d2ac58e96b86e, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.437
+  m_Volume: 0.843
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -5292,7 +5292,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 06749d1a329758d43947d8f4912e4837, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.657
+  m_Volume: 0.843
   m_Pitch: 1
   Loop: 1
   Mute: 0
