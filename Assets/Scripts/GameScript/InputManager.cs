@@ -150,6 +150,7 @@ public class InputManager : GameComponent
     private void InvokeResult()
     {
         stageManager.SetCharacterVerbs(charactersInvokeVerb);
+        stageManager.StartQueuedVerbs();
         return;
     }
 
