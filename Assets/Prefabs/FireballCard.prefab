@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4543934461135353049}
   - component: {fileID: 6614335340126179800}
   - component: {fileID: 8809338316589389811}
+  - component: {fileID: 8711722459902679897}
   m_Layer: 5
   m_Name: FireballCard
   m_TagString: Untagged
@@ -90,6 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 499e007008191864fb447082fe795dfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  owner: {fileID: 0}
 --- !u!114 &8809338316589389811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,4 +135,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4543934461135353049}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &8711722459902679897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6587592274398754764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76691a1c225369b438f480943bf2e57c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  yourButton: {fileID: 8809338316589389811}
+  fireBall: {fileID: 8155670831498623064, guid: 1b147fbf4377b144a89fd846c81129c4, type: 3}
+  game: {fileID: 5645657753800956192, guid: 3de07aaa79ff75f4f84421706de41dce, type: 3}

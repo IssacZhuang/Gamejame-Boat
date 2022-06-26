@@ -21,8 +21,8 @@ public class CardScript : MonoBehaviour
 
     }
 
-    public void Onclick()
-    {
+    //public void Onclick()
+    //{
 
-    }
+    //}
 }
