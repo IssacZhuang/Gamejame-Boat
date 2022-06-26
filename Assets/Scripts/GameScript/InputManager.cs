@@ -7,7 +7,7 @@ public class InputManager : GameComponent
 {
     //GameManager gameManager;
     private StageManager stageManager;
-
+    
     // to store data for each stage
     private int indexCounter = 0;
     private List<Character> characters = new List<Character>();

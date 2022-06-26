@@ -148,6 +148,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 187200a2d77c20a4c9ec7b9d0ff810ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  yourButton: {fileID: -955678907751327000}
-  fireBall: {fileID: 0}
+  cardButton: {fileID: -955678907751327000}
+  player: {fileID: 0}
   interactionManager: {fileID: 0}
