@@ -29,11 +29,11 @@ public class MoveCardScript : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                Verb_Move move = (Verb_Move)VerbDefOf.movementBasic.CreateVerb();
 
                 RaycastHit hit;
                 if (Physics.Raycast(ray, out hit, 100, 5))
                 {
+                    this.move = (Verb_Move)VerbDefOf.movementBasic.CreateVerb();
                     this.move.TrySetTarget(new TargetInfo { location = new Vector3(hit.point.x, player.transform.position.y, hit.point.z) });
                     TaskOnReadyClick();
                 }
