@@ -6,8 +6,9 @@ using UnityEngine.UI;
 public class SlotScript : Scaffold.Thing
 {
     public bool isFilled;
-    public Image slotIcon;
     public bool isPeek;
+    public Image slotIcon;
+
 
     public Sprite fireballIcon;
     public Sprite splitFireballIcon;
@@ -64,6 +65,7 @@ public class SlotScript : Scaffold.Thing
     {
         slotIcon.sprite = null;
         isFilled = false;
+        isPeek = false;
     }
 
 }
