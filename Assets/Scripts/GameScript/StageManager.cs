@@ -108,7 +108,7 @@ public class StageManager : GameComponent
         }
         UnityEngine.Debug.Log(characters.Count);
 
-        interactionManager.StartTest();
+        //interactionManager.StartTest();
     }
 
     public void SortCharacter()

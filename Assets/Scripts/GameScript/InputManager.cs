@@ -89,10 +89,10 @@ public class InputManager : GameComponent
         CheckPeek();
     }
 
-    public Character GuiPeekCallBack()
+    public Character GuiPeekGetCharacterCallBack()
     {
         //return character or null
-        if (charactersCanPeek.Count == indexCounter)
+        if (charactersCanPeek.Count > indexCounter)
         {
             indexCounter += 1;
             return charactersCanPeek[indexCounter];
