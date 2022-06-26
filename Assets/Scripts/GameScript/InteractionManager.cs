@@ -12,6 +12,14 @@ public class InteractionManager : MonoBehaviour
     public GameObject defendCard;
     public GameObject movementCard;
     public GameObject peekCard;
+    public Sprite fireballIcon;
+    public Sprite splitFireballIcon;
+    public Sprite meteoroliteIcon;
+    public Sprite defendIcon;
+    public Sprite movementIcon;
+    public Sprite peekIcon;
+    public SlotScript slot1;
+    public SlotScript slot2;
     public Transform CardUIParentTransform;
     private List<CardScript> cardList;
 
@@ -102,22 +110,43 @@ public class InteractionManager : MonoBehaviour
 
             }
         }
+        slot1.isFilled = true;
+        slot1.slotIcon.sprite = fireballIcon;
     }
 
+    public bool IfSlotsAllFilled()
+    {
+        return slot1.isFilled && slot2.isFilled;
+    }
 
+    public void FillSlot(Verb verb)
+    {
+        if (!IfSlotsAllFilled())
+        {
+
+        }
+    }
     public void Slot1Clicked()
     {
-        //foreach (CardScript card in cardList)
-        //{
-        //    card.GetComponent<Button>.Onclick.
-        //}
+        //Debug.Log("Slot1 clicked");
+        if (slot1.isFilled)
+        {
+            slot1.slotIcon.sprite = null;
+            slot1.isFilled = false;
+        }
     }
 
 
     public void Slot2Clicked()
     {
-
+        if (slot2.isFilled)
+        {
+            slot2.slotIcon.sprite = null;
+            slot2.isFilled = false;
+        }
     }
+
+
     public void GenerateCard()
     {
 
@@ -131,6 +160,11 @@ public class InteractionManager : MonoBehaviour
     public void SelectCard()
     {
 
+    }
+
+    public void Test()
+    {
+        Debug.Log("Card Clicked");
     }
 
 }
