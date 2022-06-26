@@ -266,7 +266,7 @@ public class InteractionManager : GameComponent
 
     public void FillSlot(Verb verb)
     {
-        if (verb != null)
+        if (verb != null && verb.def != null)
         {
             if (!IfSlotsAllFilled())
             {
