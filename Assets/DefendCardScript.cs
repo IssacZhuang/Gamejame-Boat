@@ -17,7 +17,6 @@ public class DefendCardScript : MonoBehaviour
     public void Start()
     {
         CardScript script = GetComponent<CardScript>();
-        this.shield = (Verb_Defend)VerbDefOf.defendBasic.CreateVerb();
         this.player = script.owner;
 
         Button btn = cardButton.GetComponent<Button>();
@@ -30,6 +29,7 @@ public class DefendCardScript : MonoBehaviour
         if (isClicked)
         {
             this.shield = (Verb_Defend)VerbDefOf.defendBasic.CreateVerb();
+            this.shield.objct = shieldObj;
             TaskOnReadyClick();
 
             //if (!isShieldGenerated)

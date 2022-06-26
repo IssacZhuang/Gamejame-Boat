@@ -363,7 +363,6 @@ public class InteractionManager : GameComponent
                 if (!slot1.isFilled)
                 {
                     verbList[0] = verb;
-                    Debug.Log(verb.def);
                     FillSlotIcon(verb, slot1);
                 }
                 else if (!slot2.isFilled)

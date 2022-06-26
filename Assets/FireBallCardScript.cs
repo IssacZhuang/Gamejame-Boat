@@ -15,7 +15,6 @@ public class FireBallCardScript : MonoBehaviour
     public void Start()
     {
         CardScript script = GetComponent<CardScript>();
-        this.shoot = (Verb_ShootFireBall)VerbDefOf.attackFireball.CreateVerb();
         player = script.owner;
 
         Button btn = cardButton.GetComponent<Button>();

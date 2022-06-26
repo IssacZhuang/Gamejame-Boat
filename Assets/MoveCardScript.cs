@@ -14,7 +14,6 @@ public class MoveCardScript : MonoBehaviour
     public void Start()
     {
         CardScript script = GetComponent<CardScript>();
-        this.move = (Verb_Move)VerbDefOf.movementBasic.CreateVerb();
         this.player = script.owner;
 
         Button btn = cardButton.GetComponent<Button>();
