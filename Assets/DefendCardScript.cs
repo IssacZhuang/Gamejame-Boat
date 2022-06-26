@@ -6,26 +6,22 @@ using UnityEngine.UI;
 public class DefendCardScript : MonoBehaviour
 {
     public Button cardButton;
-    public Button selectedButton;
     public GameObject shieldObj;
     bool isClicked = false;
-    Character player;
+    public Character player;
     public InteractionManager interactionManager;
     bool isShieldGenerated = false;
-    Verb_Defend shield;
+    public Verb_Defend shield;
 
     // Start is called before the first frame update
     public void Start()
     {
         CardScript script = GetComponent<CardScript>();
         shield = (Verb_Defend)VerbDefOf.defendBasic.CreateVerb();
-        player = script.owner;
+        this.player = script.owner;
 
         Button btn = cardButton.GetComponent<Button>();
         btn.onClick.AddListener(TaskOnClick);
-
-        Button seletbtn = selectedButton.GetComponent<Button>();
-        seletbtn.onClick.AddListener(TaskOnReadyClick);
     }
 
     // Update is called once per frame
@@ -33,7 +29,8 @@ public class DefendCardScript : MonoBehaviour
     {
         if (isClicked)
         {
-            Verb_Defend shield = (Verb_Defend)VerbDefOf.defendBasic.CreateVerb();
+            this.shield = (Verb_Defend)VerbDefOf.defendBasic.CreateVerb();
+            TaskOnReadyClick();
 
             //if (!isShieldGenerated)
             //{
@@ -49,12 +46,8 @@ public class DefendCardScript : MonoBehaviour
     }
     public void TaskOnReadyClick()
     {
-        if (isClicked)
-        {
-            interactionManager.FillSlot(shield);
-            isClicked = false;
-        }
-
+        interactionManager.FillSlot(shield);
+        isClicked = false;
     }
     public void TaskOnClick()
     {

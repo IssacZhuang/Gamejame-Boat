@@ -6,23 +6,19 @@ using UnityEngine.UI;
 public class MoveCardScript : MonoBehaviour
 {
     public Button cardButton;
-    public Button selectedButton;
     bool isClicked = false;
-    Character player;
+    public Character player;
     public InteractionManager interactionManager;
-    Verb_Move move;
+    public Verb_Move move;
     // Start is called before the first frame update
     public void Start()
     {
         CardScript script = GetComponent<CardScript>();
-        move = (Verb_Move)VerbDefOf.movementBasic.CreateVerb();
-        player = script.owner;
+        this.move = (Verb_Move)VerbDefOf.movementBasic.CreateVerb();
+        this.player = script.owner;
 
         Button btn = cardButton.GetComponent<Button>();
         btn.onClick.AddListener(TaskOnClick);
-
-        Button seletbtn = selectedButton.GetComponent<Button>();
-        seletbtn.onClick.AddListener(TaskOnReadyClick);
     }
 
     // Update is called once per frame
@@ -38,8 +34,8 @@ public class MoveCardScript : MonoBehaviour
                 RaycastHit hit;
                 if (Physics.Raycast(ray, out hit, 100, 5))
                 {
-                    move.TrySetTarget(new TargetInfo { location = new Vector3(hit.point.x, player.transform.position.y, hit.point.z) });
-
+                    this.move.TrySetTarget(new TargetInfo { location = new Vector3(hit.point.x, player.transform.position.y, hit.point.z) });
+                    TaskOnReadyClick();
                 }
 
                 //player.VerbTracker.AddVerb(move);
@@ -55,11 +51,8 @@ public class MoveCardScript : MonoBehaviour
     }
     public void TaskOnReadyClick()
     {
-        if (this.isClicked)
-        {
-            interactionManager.FillSlot(move);
-            isClicked = false;
-        }
+        interactionManager.FillSlot(move);
+        isClicked = false;
 
     }
 

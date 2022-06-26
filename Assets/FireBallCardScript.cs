@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class FireBallCardScript : MonoBehaviour
 {
     public Button cardButton;
-    public Button selectedButton;
     public GameObject fireBall;
     bool isClicked = false;
     public Character player;
@@ -21,9 +20,6 @@ public class FireBallCardScript : MonoBehaviour
 
         Button btn = cardButton.GetComponent<Button>();
         btn.onClick.AddListener(TaskOnClick);
-
-        Button seletbtn = selectedButton.GetComponent<Button>();
-        seletbtn.onClick.AddListener(TaskOnReadyClick);
     }
 
     // Update is called once per frame
@@ -34,14 +30,17 @@ public class FireBallCardScript : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                this.shoot = (Verb_ShootFireBall)VerbDefOf.attackFireball.CreateVerb();
 
+                
                 RaycastHit hit;
                 if (Physics.Raycast(ray, out hit, 100, 5))
                 {
+                    Debug.Log("test");
+                    this.shoot = (Verb_ShootFireBall)VerbDefOf.attackFireball.CreateVerb();
                     this.shoot.TrySetTarget(new TargetInfo { location = new Vector3(hit.point.x, player.transform.position.y, hit.point.z) });
                     this.shoot.objct = fireBall;
-                    
+                    TaskOnReadyClick();
+
                 }
 
                 //player.VerbTracker.AddVerb(shoot);
@@ -58,11 +57,9 @@ public class FireBallCardScript : MonoBehaviour
 
     public void TaskOnReadyClick()
     {
-        if (this.isClicked)
-        {
-            interactionManager.FillSlot(shoot);
-            isClicked = false;
-        }
+        
+        interactionManager.FillSlot(shoot);
+        isClicked = false;
 
     }
 
