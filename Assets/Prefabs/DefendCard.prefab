@@ -148,6 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35f5a1780ffef4444929fbb3b2da7eb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  yourButton: {fileID: 1286337058312589245}
-  shieldObj: {fileID: 0}
+  cardButton: {fileID: 1286337058312589245}
+  shieldObj: {fileID: 7113869286142854055, guid: ba2edc17e61ad404a9fd4bc160823ffd, type: 3}
+  player: {fileID: 0}
   interactionManager: {fileID: 0}

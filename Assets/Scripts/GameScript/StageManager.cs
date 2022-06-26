@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Diagnostics;
 using UnityEngine;
+using DigitalRuby.SoundManagerNamespace;
 
 using Scaffold;
 public class StageManager : GameComponent
@@ -12,7 +13,7 @@ public class StageManager : GameComponent
 
     public InteractionManager interactionManager;
     public InputManager inputManager;
-
+    public GameObject soundManager;
     private int playerLimit;
 
 
@@ -100,15 +101,22 @@ public class StageManager : GameComponent
 
     public void StartNewStage()
     {
+        // play bgm and sound
+        soundManager.GetComponent<SoundManagerDemo>().PlayMusic(0);
+        //soundManager.GetComponent<SoundManagerDemo>().PlayMusic(1);
+        soundManager.GetComponent<SoundManagerDemo>().PlaySound(3);
+
+
         playerLimit = playerPrefab.Length;
 
         for (int i = 0; i < playerLimit; i++)
         {
             AddNewCharacter(i % 2);
         }
-        UnityEngine.Debug.Log(characters.Count);
+        UnityEngine.Debug.Log(Screen.width + " " + Screen.height);
 
         interactionManager.intStatus();
+
     }
 
     public void SortCharacter()
