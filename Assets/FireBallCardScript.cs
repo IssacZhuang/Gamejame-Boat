@@ -9,14 +9,14 @@ public class FireBallCardScript : MonoBehaviour
     public Button selectedButton;
     public GameObject fireBall;
     bool isClicked = false;
-    Character player;
+    public Character player;
     public InteractionManager interactionManager;
-    Verb_ShootFireBall shoot;
+    public Verb_ShootFireBall shoot;
     // Start is called before the first frame update
     public void Start()
     {
         CardScript script = GetComponent<CardScript>();
-        shoot = (Verb_ShootFireBall)VerbDefOf.attackFireball.CreateVerb();
+        this.shoot = (Verb_ShootFireBall)VerbDefOf.attackFireball.CreateVerb();
         player = script.owner;
 
         Button btn = cardButton.GetComponent<Button>();
@@ -34,13 +34,13 @@ public class FireBallCardScript : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                Verb_ShootFireBall shoot = (Verb_ShootFireBall)VerbDefOf.attackFireball.CreateVerb();
+                this.shoot = (Verb_ShootFireBall)VerbDefOf.attackFireball.CreateVerb();
 
                 RaycastHit hit;
                 if (Physics.Raycast(ray, out hit, 100, 5))
                 {
-                    shoot.TrySetTarget(new TargetInfo { location = new Vector3(hit.point.x, player.transform.position.y, hit.point.z) });
-                    shoot.objct = fireBall;
+                    this.shoot.TrySetTarget(new TargetInfo { location = new Vector3(hit.point.x, player.transform.position.y, hit.point.z) });
+                    this.shoot.objct = fireBall;
                     
                 }
 
