@@ -11,10 +11,10 @@ public class MoveCardScript : MonoBehaviour
     public InteractionManager interactionManager;
     Verb_Move move;
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         CardScript script = GetComponent<CardScript>();
-
+        move = (Verb_Move)VerbDefOf.movementBasic.CreateVerb();
         player = script.owner;
 
         Button btn = yourButton.GetComponent<Button>();
@@ -22,14 +22,14 @@ public class MoveCardScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
         if (isClicked)
         {
             if (Input.GetMouseButtonDown(0))
             {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                move = new Verb_Move();
+                Verb_Move move = (Verb_Move)VerbDefOf.movementBasic.CreateVerb();
 
                 RaycastHit hit;
                 if (Physics.Raycast(ray, out hit, 100, 5))
@@ -42,8 +42,6 @@ public class MoveCardScript : MonoBehaviour
                 player.VerbTracker.NextVerb();
             }
 
-            interactionManager.FillSlot(move);
-
         }
 
         //if (player.VerbTracker.pendingVerbs.Count != 0 && player.VerbTracker.pendingVerbs.Count == 2)
@@ -51,9 +49,11 @@ public class MoveCardScript : MonoBehaviour
 
         //}
     }
-    void TaskOnClick()
-    {
 
+
+    public void TaskOnClick()
+    {
+        interactionManager.FillSlot(move);
         isClicked = true;
 
     }

@@ -12,10 +12,10 @@ public class FireBallCardScript : MonoBehaviour
     public InteractionManager interactionManager;
     Verb_ShootFireBall shoot;
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         CardScript script = GetComponent<CardScript>();
-
+        shoot = (Verb_ShootFireBall)VerbDefOf.attackFireball.CreateVerb();
         player = script.owner;
 
         Button btn = yourButton.GetComponent<Button>();
@@ -23,14 +23,14 @@ public class FireBallCardScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
         if (isClicked)
         {
             if (Input.GetMouseButtonDown(0))
             {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                shoot = new Verb_ShootFireBall();
+                Verb_ShootFireBall shoot = (Verb_ShootFireBall)VerbDefOf.attackFireball.CreateVerb();
 
                 RaycastHit hit;
                 if (Physics.Raycast(ray, out hit, 100, 5))
@@ -41,10 +41,8 @@ public class FireBallCardScript : MonoBehaviour
                 }
 
                 player.VerbTracker.AddVerb(shoot);
-                //player.VerbTracker.NextVerb();
+                player.VerbTracker.NextVerb();
             }
-
-            interactionManager.FillSlot(shoot);
 
         }
 
@@ -53,9 +51,10 @@ public class FireBallCardScript : MonoBehaviour
 
         //}
     }
-    void TaskOnClick()
+    public void TaskOnClick()
     {
-        
+
+        interactionManager.FillSlot(shoot);
         isClicked = true;
 
     }

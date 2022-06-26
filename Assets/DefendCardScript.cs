@@ -14,10 +14,10 @@ public class DefendCardScript : MonoBehaviour
     Verb_Defend shield;
 
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         CardScript script = GetComponent<CardScript>();
-
+        shield = (Verb_Defend)VerbDefOf.defendBasic.CreateVerb();
         player = script.owner;
 
         Button btn = yourButton.GetComponent<Button>();
@@ -25,14 +25,14 @@ public class DefendCardScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
         if (isClicked)
         {
             if (!isShieldGenerated)
             {
                 // add the defend verb into the queue
-                shield = new Verb_Defend();
+                Verb_Defend shield = (Verb_Defend)VerbDefOf.defendBasic.CreateVerb();
 
                 shield.objct = shieldObj;
 
@@ -41,7 +41,6 @@ public class DefendCardScript : MonoBehaviour
                 isShieldGenerated = true;
             }
 
-            interactionManager.FillSlot(shield);
         }
 
         //if (player.VerbTracker.pendingVerbs.Count != 0 && player.VerbTracker.pendingVerbs.Count == 2)
@@ -49,9 +48,10 @@ public class DefendCardScript : MonoBehaviour
 
         //}
     }
-    void TaskOnClick()
+    public void TaskOnClick()
     {
 
+        interactionManager.FillSlot(shield);
         isClicked = true;
 
     }
