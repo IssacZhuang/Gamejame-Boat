@@ -113,9 +113,10 @@ public class StageManager : GameComponent
         {
             AddNewCharacter(i % 2);
         }
-        UnityEngine.Debug.Log(characters.Count);
+        UnityEngine.Debug.Log(Screen.width + " " + Screen.height);
 
         interactionManager.intStatus();
+
     }
 
     public void SortCharacter()
