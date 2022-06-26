@@ -44,7 +44,6 @@ public class Verb
     {
         if (ShouldEndVerb && !isEnded)
         {
-            isEnded = true;
             OnVerbEnd();
             return;
         }
@@ -52,6 +51,7 @@ public class Verb
 
     public virtual void OnVerbEnd()
     {
+        isEnded = true;
         this.parent = null;
     }
 }

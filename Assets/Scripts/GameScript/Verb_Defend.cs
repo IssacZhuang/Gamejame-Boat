@@ -13,8 +13,11 @@ public class Verb_Defend : Verb
         shield.transform.SetParent(parent.transform);
         shield.transform.localPosition = new Vector3(0, 0, 0);
         parent.BuffTracker.TryAddBuff(BuffDefOf.defend);
+        
         return base.TryCastVerb();
     }
+
+    public override bool ShouldEndVerb => true;
 
     public override void OnVerbEnd()
     {

@@ -126,6 +126,17 @@ public class InputManager : GameComponent
         bool clear = !characters.Any(x => x.VerbTracker.HasQueuedVerb);
         return clear;
     }
+
+    public void BuffClearCallBack()
+    {
+        foreach (var c in characters)
+        {
+            c.BuffTracker.Buffs.Clear();
+        }
+
+    }
+
+
     public List<Verb> GuiGetPrepareDictCallBack(Character character)
     {
         return charactersPeekVerb[character];

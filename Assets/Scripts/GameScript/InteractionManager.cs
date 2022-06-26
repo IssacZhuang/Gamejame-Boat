@@ -117,6 +117,7 @@ public class InteractionManager : GameComponent
         if (!isPrepareStage && !isPeekStage && verbClear)
         {
             intStatus();
+            inputManager.BuffClearCallBack();
             this.isPrepareStage = true;
             this.isPrepareDone = true;
             this.isPeekStage = false;
