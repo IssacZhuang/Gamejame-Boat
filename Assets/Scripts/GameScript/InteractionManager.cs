@@ -44,7 +44,7 @@ public class InteractionManager : GameComponent
     {
         //inputManager.GuiPrepareStartCallBack();
         //Debug.Log("start test");
-        intStatus();
+        //intStatus();
         //slot1.isFilled = true;
         //slot1.slotIcon.sprite = fireballIcon;
     }
