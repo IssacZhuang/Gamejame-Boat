@@ -36,8 +36,8 @@ public class InteractionManager : GameComponent
         inputManager.GuiPrepareStartCallBack();
         PreparationSwitchCharacter();
 
-        //slot1.isFilled = true;
-        //slot1.slotIcon.sprite = fireballIcon;
+        slot1.isFilled = true;
+        slot1.slotIcon.sprite = fireballIcon;
     }
 
 
@@ -67,7 +67,7 @@ public class InteractionManager : GameComponent
             currentCharacter = character;
             List<VerbDef> verbInHand = character.VerbInhand;
             cardList = new List<CardScript>();
-            verbList = new List<Verb>(new Verb[inputManager.characterCount]);
+            verbList = new List<Verb>(new Verb[2]);
             int counter = 0;
             Debug.Log(verbInHand.Count);
             foreach (VerbDef verbDef in verbInHand)
@@ -219,8 +219,7 @@ public class InteractionManager : GameComponent
                 if (verbDef == VerbDefOf.attackFireball)
                 {
                     cardObj = GameObject.Instantiate(fireballCard);
-                }
-                if (verbDef == VerbDefOf.attackSplitFireball)
+                }if (verbDef == VerbDefOf.attackSplitFireball)
                 {
                     cardObj = GameObject.Instantiate(splitFireballCard);
                 }
@@ -251,6 +250,8 @@ public class InteractionManager : GameComponent
 
             }
 
+            //slot icon display
+
             return true;
         }
         else
@@ -266,7 +267,7 @@ public class InteractionManager : GameComponent
 
     public void FillSlot(Verb verb)
     {
-        if (verb != null)
+        if (verb != null && verb.def != null)
         {
             if (!IfSlotsAllFilled())
             {
@@ -301,7 +302,7 @@ public class InteractionManager : GameComponent
                 }
                 else if (!slot2.isFilled)
                 {
-                    verbList[0] = verb;
+                    verbList[1] = verb;
                     if (verb.def == VerbDefOf.attackFireball)
                     {
                         slot2.SetIcon(fireballIcon);
@@ -331,12 +332,14 @@ public class InteractionManager : GameComponent
         }
         
     }
+    //bug !!!!
     public void Slot1Clicked()
     {
         //Debug.Log("Slot1 clicked");
         if (slot1.isFilled && !isPrepare && !slot1.isPeek)
         {
             slot1.RemoveIcon();
+            verbList[0] = null;
         }
     }
 
@@ -346,6 +349,7 @@ public class InteractionManager : GameComponent
         if (slot2.isFilled && !isPrepare && !slot2.isPeek)
         {
             slot2.RemoveIcon();
+            verbList[1] = null;
         }
     }
 
@@ -386,14 +390,20 @@ public class InteractionManager : GameComponent
         {
             if (IfSlotsAllFilled())
             {
-                inputManager.GuiPrepareSelectCallBack(currentCharacter, verbList);
+                inputManager.GuiPeekSelectCallBack(currentCharacter, verbList);
             }
             else
             {
                 return;
             }
         }
-
+        if (!PeekSwitchCharacter())
+        {
+            currentCharacter = null;
+            cardList = null;
+            verbList = null;
+            inputManager.GuiPeekEndCallBack();
+        }
     }
 
     //public void CharacterPeekFinished()
