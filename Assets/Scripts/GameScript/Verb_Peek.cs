@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class Verb_Peek : MonoBehaviour
 {
-    public GameObject objct;
+    public Character targetCharacter;
+
+    public void AssignTarget(GameObject c)
+    {
+        targetCharacter = c.GetComponent<Character>();
+    }
 
 }
+
