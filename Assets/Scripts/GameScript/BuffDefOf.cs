@@ -35,6 +35,8 @@ public static class BuffDefOf
         // for repel debuff
         repelDebuff.workerClass = typeof(Buff_Repel);
 
+        defend.workerClass = typeof(BuffDefend);
+
         // Defend All Attack
         //defend.initialSeverity = 5;
         defend.immuniteBuffs.Add(attack);

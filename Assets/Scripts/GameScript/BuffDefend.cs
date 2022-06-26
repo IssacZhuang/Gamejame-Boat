@@ -2,17 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BuffDefend : MonoBehaviour
+public class BuffDefend : Buff
 {
-    // Start is called before the first frame update
-    void Start()
+    public GameObject shield;
+
+    public override void BuffPostAdd()
     {
-        
+        shield.SetActive(true);
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void OnRemoved()
     {
-        
+        shield.SetActive(false);
+        base.OnRemoved();
     }
+
 }
