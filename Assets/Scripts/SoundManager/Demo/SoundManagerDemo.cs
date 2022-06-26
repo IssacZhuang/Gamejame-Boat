@@ -25,30 +25,21 @@ namespace DigitalRuby.SoundManagerNamespace
         public AudioSource[] SoundAudioSources;
         public AudioSource[] MusicAudioSources;
 
-        private void PlaySound(int index)
+        public void PlaySound(int index)
         {
-            int count;
-            if (!int.TryParse(SoundCountTextBox.text, out count))
-            {
-                count = 1;
-            }
-            while (count-- > 0)
-            {
-                SoundAudioSources[index].PlayOneShotSoundManaged(SoundAudioSources[index].clip);
-            }
+
+            SoundAudioSources[index].PlayOneShotSoundManaged(SoundAudioSources[index].clip);
+            
         }
 
-        private void PlayMusic(int index)
+        public void PlayMusic(int index)
         {
             MusicAudioSources[index].PlayLoopingMusicManaged(1.0f, 1.0f, PersistToggle.isOn);
         }
 
         private void CheckPlayKey()
         {
-            if (SoundCountTextBox.isFocused)
-            {
-                return;
-            }
+            
 
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
