@@ -111,7 +111,7 @@ public class InteractionManager : GameComponent
         }
 
         // ???????, ????????
-        if(!isPrepareStage && !isPrepareStage)
+        if(!isPrepareStage && !isPeekStage)
         {
             intStatus();
         }
