@@ -37,11 +37,11 @@ public class InputManager : GameComponent
         //stageManager.StartNewStage();
     }
 
-    public void AddNewCharacter()
-    {
-        stageManager.AddNewCharacter();
+    //public void AddNewCharacter()
+    //{
+    //    stageManager.AddNewCharacter();
 
-    }
+    //}
 
     // --------------PrepareStage--------------
     public void GuiPrepareStartCallBack()

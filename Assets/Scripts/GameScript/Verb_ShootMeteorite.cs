@@ -40,7 +40,7 @@ public class Verb_ShootMeteorite : Verb
             tmpCharacter = target as Character;
             tmpCharacter.BuffTracker.TryAddBuff(BuffDefOf.attack);
             Buff_Repel buff_Repel = (Buff_Repel)BuffDefOf.repelDebuff.CreateBuff();
-            buff_Repel.direction = (target.transform.position - this.parent.transform.position);
+            buff_Repel.direction = (target.transform.position - Target.location);
             buff_Repel.direction.Set(buff_Repel.direction.x, 0, buff_Repel.direction.z);
             tmpCharacter.BuffTracker.TryAddBuff(buff_Repel);
         }

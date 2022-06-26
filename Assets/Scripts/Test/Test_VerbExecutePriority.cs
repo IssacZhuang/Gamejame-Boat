@@ -12,7 +12,7 @@ public class Test_VerbExecutePriority : GameComponent
         StageManager stageManager = GetComponent<StageManager>();
         for (int i = 0; i < 4; i++)
         {
-            stageManager.AddNewCharacter();
+            stageManager.AddNewCharacter(i%2);
         }
 
         VerbDef verb1 = new VerbDef { defName = "1", priority = 1 };
