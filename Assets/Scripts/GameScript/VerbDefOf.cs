@@ -11,6 +11,7 @@ public static class VerbDefOf
     public static VerbDef defendBasic = new VerbDef("Verb_Defend_BasicDefend");
     public static VerbDef movementBasic = new VerbDef("Verb_Movement_BasicMovement");
     public static VerbDef movementSwap = new VerbDef("Verb_Movement_Swap");
+    public static VerbDef peek = new VerbDef("Verb_Movement_Swap");
 
     static VerbDefOf()
     {
@@ -21,5 +22,6 @@ public static class VerbDefOf
 
         defendBasic.workerClass = typeof(Verb_Defend);
         movementBasic.workerClass = typeof(Verb_Move);
+        peek.workerClass = typeof(Verb_Peek);
     }
 }
